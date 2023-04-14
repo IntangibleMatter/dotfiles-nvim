@@ -42,7 +42,23 @@ return require('packer').startup(function(use)
 
     use { 'williamboman/mason.nvim' }
     use { 'williamboman/mason-lspconfig.nvim'}
-
+        -- Packer
+    use({
+      "folke/noice.nvim",
+      config = function()
+        require("noice").setup({
+            -- add any options here
+        })
+      end,
+      requires = {
+        -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+        "MunifTanjim/nui.nvim",
+        -- OPTIONAL:
+        --   `nvim-notify` is only needed, if you want to use the notification view.
+        --   If not available, we use `mini` as the fallback
+        "rcarriga/nvim-notify",
+        }
+    })
 
     use { 'neovim/nvim-lspconfig' }
     use { 'hrsh7th/nvim-cmp', config = [[require('config.nvim-cmp')]] }    
@@ -79,11 +95,11 @@ return require('packer').startup(function(use)
     use {'romgrk/barbar.nvim', requires  = 'nvim-tree/nvim-web-devicons'}
     use 'voldikss/vim-floaterm'
     -- use 'nvim-telescope/telescope.nvim'
-    use 'vimwiki/vimwiki'
+  --  use 'vimwiki/vimwiki'
     use 'echasnovski/mini.indentscope' 
     use 'MunifTanjim/nui.nvim'
     use 'rcarriga/nvim-notify'
-    use 'folke/noice.nvim'
+--    use 'folke/noice.nvim'
     use 'nvim-lualine/lualine.nvim'
 
   
