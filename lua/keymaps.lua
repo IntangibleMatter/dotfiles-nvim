@@ -3,6 +3,14 @@ local opts = {
     noremap = true,      -- non-recursive
     silent = true,       -- do not show message
 }
+
+vim.g.mapleader = " "
+
+local map = vim.keymap.set
+
+map("n", "<leader>f", ":NvimTreeToggle<CR>", opt)
+map("n", "<leader>t", ":FloatermNew<CR>", opt)
+
 --[[
 -----------------
 -- Normal mode --

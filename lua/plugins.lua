@@ -35,12 +35,27 @@ return require('packer').startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
     use 'yamatsum/nvim-cursorline'
+    require('nvim-cursorline').setup {
+  cursorline = {
+    enable = true,
+    timeout = 1000,
+    number = false,
+  },
+  cursorword = {
+    enable = true,
+    min_length = 3,
+    hl = { underline = true },
+  }
+}
     use 'folke/tokyonight.nvim' 
     use 'Mofiqul/dracula.nvim'
     use 'ayu-theme/ayu-vim'
 --    use 'tanvirtin/monokai.nvim'
 
-    use { 'williamboman/mason.nvim' }
+use {
+    "williamboman/mason.nvim",
+    run = ":MasonUpdate" -- :MasonUpdate updates registry contents
+}
     use { 'williamboman/mason-lspconfig.nvim'}
         -- Packer
     use({
@@ -66,13 +81,25 @@ return require('packer').startup(function(use)
     use { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' }        -- buffer auto-completion
     use { 'hrsh7th/cmp-path', after = 'nvim-cmp' }          -- path auto-completion
     use { 'hrsh7th/cmp-cmdline', after = 'nvim-cmp' }       -- cmdline auto-completion
-    use 'L3MON4D3/LuaSnip'
+   use({
+	"L3MON4D3/LuaSnip",
+	-- follow latest release.
+	tag = "v<CurrentMajor>.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+	-- install jsregexp (optional!:).
+	run = "make install_jsregexp"
+}) 
     use 'saadparwaiz1/cmp_luasnip'
 
     -- You can alias plugin names
     use {'dracula/vim', as = 'dracula'}
     -- Superuser's recs
-    use 's1n7ax/nvim-terminal'
+use {
+    's1n7ax/nvim-terminal',
+    config = function()
+        vim.o.hidden = true
+        require('nvim-terminal').setup()
+    end,
+}
     -- use 'simrat39/rust-tools'
     use 'nvim-lua/plenary.nvim'
     use 'mfussenegger/nvim-dap'
@@ -89,9 +116,28 @@ return require('packer').startup(function(use)
     require("nvim-tree").setup {}
   end
 }  
-    
-    use 'folke/which-key.nvim'
-    use 'goolord/alpha-nvim'
+   -- Lua
+use {
+  "folke/which-key.nvim",
+  config = function()
+    vim.o.timeout = true
+    vim.o.timeoutlen = 300
+    require("which-key").setup {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    }
+  end
+}
+
+use {
+    'goolord/alpha-nvim',
+    requires = { 'nvim-tree/nvim-web-devicons' },
+    config = function ()
+        require'alpha'.setup(require'alpha.themes.startify'.config)
+    end
+}
+ 
     use {'romgrk/barbar.nvim', requires  = 'nvim-tree/nvim-web-devicons'}
     use 'voldikss/vim-floaterm'
     -- use 'nvim-telescope/telescope.nvim'
@@ -101,7 +147,7 @@ return require('packer').startup(function(use)
     use 'rcarriga/nvim-notify'
 --    use 'folke/noice.nvim'
     use 'nvim-lualine/lualine.nvim'
-
+    use 'chaimleib/vim-renpy'
   
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
