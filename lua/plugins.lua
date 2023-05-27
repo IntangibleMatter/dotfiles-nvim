@@ -81,6 +81,7 @@ use {
     use { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' }        -- buffer auto-completion
     use { 'hrsh7th/cmp-path', after = 'nvim-cmp' }          -- path auto-completion
     use { 'hrsh7th/cmp-cmdline', after = 'nvim-cmp' }       -- cmdline auto-completion
+    use { "catppuccin/nvim", as = "catppuccin" }
    use({
 	"L3MON4D3/LuaSnip",
 	-- follow latest release.
@@ -89,7 +90,7 @@ use {
 	run = "make install_jsregexp"
 }) 
     use 'saadparwaiz1/cmp_luasnip'
-
+   -- use {'edluffy/hologram.nvim'}
     -- You can alias plugin names
     use {'dracula/vim', as = 'dracula'}
     -- Superuser's recs
@@ -100,6 +101,8 @@ use {
         require('nvim-terminal').setup()
     end,
 }
+    use 'mechatroner/rainbow_csv'
+    use 'godlygeek/tabular'
     -- use 'simrat39/rust-tools'
     use 'nvim-lua/plenary.nvim'
     use 'mfussenegger/nvim-dap'
