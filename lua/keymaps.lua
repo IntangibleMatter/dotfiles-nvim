@@ -11,6 +11,18 @@ local map = vim.keymap.set
 map("n", "<leader>f", ":NvimTreeToggle<CR>", opt)
 map("n", "<leader>t", ":FloatermNew<CR>", opt)
 
+local builtin = require('telescope.builtin')
+map('n', '<leader>qf', builtin.find_files, {})
+map('n', '<leader>qg', builtin.live_grep, {})
+map('n', '<leader>qb', builtin.buffers, {})
+map('n', '<leader>qh', builtin.help_tags, {})
+
+
+map('n', '<leader>hd', ":HexDump<CR>", opt)
+map('n', '<leader>ha', ":HexAssemble<CR>", opt)
+map('n', '<leader>hh', ":HexToggle<CR>", opt)
+
+
 --[[
 -----------------
 -- Normal mode --

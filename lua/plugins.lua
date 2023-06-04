@@ -74,15 +74,19 @@ use {
         "rcarriga/nvim-notify",
         }
     })
-
+--	use { 'hrsh7th/vim-vsnip' }
+--	use { 'hrsh7th/vim-vsnip-integ' }
     use { 'neovim/nvim-lspconfig' }
-    use { 'hrsh7th/nvim-cmp', config = [[require('config.nvim-cmp')]] }    
+	-- use { 'hrsh7th/nvim-cmp', config = [[require('config.nvim-cmp')]] }   
+	--[[
     use { 'hrsh7th/cmp-nvim-lsp', after = 'nvim-cmp' } 
     use { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' }        -- buffer auto-completion
     use { 'hrsh7th/cmp-path', after = 'nvim-cmp' }          -- path auto-completion
     use { 'hrsh7th/cmp-cmdline', after = 'nvim-cmp' }       -- cmdline auto-completion
+	use { 'hrsh7th/cmp-nvim-lsp' } ]]--
     use { "catppuccin/nvim", as = "catppuccin" }
-   use({
+	use { "L3MON4D3/LuaSnip" }
+  --[[ use({
 	"L3MON4D3/LuaSnip",
 	-- follow latest release.
 	tag = "v<CurrentMajor>.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
@@ -90,6 +94,7 @@ use {
 	run = "make install_jsregexp"
 }) 
     use 'saadparwaiz1/cmp_luasnip'
+	]]--
    -- use {'edluffy/hologram.nvim'}
     -- You can alias plugin names
     use {'dracula/vim', as = 'dracula'}
@@ -140,10 +145,15 @@ use {
         require'alpha'.setup(require'alpha.themes.startify'.config)
     end
 }
- 
+	use { 'RaafatTurki/hex.nvim' }
     use {'romgrk/barbar.nvim', requires  = 'nvim-tree/nvim-web-devicons'}
     use 'voldikss/vim-floaterm'
     -- use 'nvim-telescope/telescope.nvim'
+	use {
+  'nvim-telescope/telescope.nvim', tag = '0.1.1',
+-- or                            , branch = '0.1.x',
+  requires = { {'nvim-lua/plenary.nvim'}, {'BurntSushi/ripgrep'} }
+}
   --  use 'vimwiki/vimwiki'
     use 'echasnovski/mini.indentscope' 
     use 'MunifTanjim/nui.nvim'
@@ -151,7 +161,16 @@ use {
 --    use 'folke/noice.nvim'
     use 'nvim-lualine/lualine.nvim'
     use 'chaimleib/vim-renpy'
-  
+
+	--nvim-cmp
+	use { 'hrsh7th/nvim-cmp' }
+	use { 'hrsh7th/cmp-buffer' }
+	use { 'hrsh7th/cmp-path' }
+	use { 'saadparwaiz1/cmp_luasnip'}
+	use { 'hrsh7th/cmp-nvim-lsp' }
+	use { 'rafamadriz/friendly-snippets' }
+
+
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if packer_bootstrap then
