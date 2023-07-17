@@ -101,7 +101,7 @@ signs = {
     -- Actions
     map('n', '<leader>gs', gs.stage_hunk, {desc = 'stage hunk'})
     map('n', '<leader>gr', gs.reset_hunk, {desc = 'reset hunk'})
-    map('v', '<leadGr>gs', function() gs.stage_hunk {vim.fn.line('.'), vim.fn.line('v')} end, { desc = 'stage hunk' })
+    map('v', '<leader>gs', function() gs.stage_hunk {vim.fn.line('.'), vim.fn.line('v')} end, { desc = 'stage hunk' })
     map('v', '<leader>gr', function() gs.reset_hunk {vim.fn.line('.'), vim.fn.line('v')} end, { desc = 'reset hunk' })
     map('n', '<leader>gS', gs.stage_buffer, { desc = 'stage buffer' })
     map('n', '<leader>gu', gs.undo_stage_hunk, { desc = 'undo stage hunk'})
