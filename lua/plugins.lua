@@ -74,16 +74,7 @@ use {
         "rcarriga/nvim-notify",
         }
     })
---	use { 'hrsh7th/vim-vsnip' }
---	use { 'hrsh7th/vim-vsnip-integ' }
     use { 'neovim/nvim-lspconfig' }
-	-- use { 'hrsh7th/nvim-cmp', config = [[require('config.nvim-cmp')]] }   
-	--[[
-    use { 'hrsh7th/cmp-nvim-lsp', after = 'nvim-cmp' } 
-    use { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' }        -- buffer auto-completion
-    use { 'hrsh7th/cmp-path', after = 'nvim-cmp' }          -- path auto-completion
-    use { 'hrsh7th/cmp-cmdline', after = 'nvim-cmp' }       -- cmdline auto-completion
-	use { 'hrsh7th/cmp-nvim-lsp' } ]]--
     use { "catppuccin/nvim", as = "catppuccin" }
 	use { "L3MON4D3/LuaSnip" }
   --[[ use({
@@ -108,7 +99,7 @@ use {
 }
     use 'mechatroner/rainbow_csv'
     use 'godlygeek/tabular'
-    -- use 'simrat39/rust-tools'
+	use 'simrat39/rust-tools.nvim'
     use 'nvim-lua/plenary.nvim'
     use 'mfussenegger/nvim-dap'
     use 'nvim-treesitter/nvim-treesitter'
@@ -145,6 +136,7 @@ use {
         require'alpha'.setup(require'alpha.themes.startify'.config)
     end
 }
+-- autodetecting files without suffixes as binary??
 	use { 'RaafatTurki/hex.nvim' }
     use {'romgrk/barbar.nvim', requires  = 'nvim-tree/nvim-web-devicons'}
     use 'voldikss/vim-floaterm'
@@ -162,15 +154,34 @@ use {
     use 'nvim-lualine/lualine.nvim'
     use 'chaimleib/vim-renpy'
 
+    -- LSP completion source:
+    use 'hrsh7th/cmp-nvim-lsp'
+
+    -- Useful completion sources:
+    use 'hrsh7th/cmp-nvim-lua'
+    use 'hrsh7th/cmp-nvim-lsp-signature-help'
+    use 'hrsh7th/cmp-vsnip'
+    use 'hrsh7th/vim-vsnip'
 	--nvim-cmp
 	use { 'hrsh7th/nvim-cmp' }
 	use { 'hrsh7th/cmp-buffer' }
 	use { 'hrsh7th/cmp-path' }
 	use { 'saadparwaiz1/cmp_luasnip'}
-	use { 'hrsh7th/cmp-nvim-lsp' }
 	use { 'rafamadriz/friendly-snippets' }
-
-
+	use { 'mg979/vim-visual-multi' }
+	use { 'lewis6991/gitsigns.nvim' }
+	use { 'beauwilliams/focus.nvim' }
+-- Lua
+use {
+  "ahmedkhalf/project.nvim",
+  config = function()
+    require("project_nvim").setup {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    }
+  end
+}
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if packer_bootstrap then

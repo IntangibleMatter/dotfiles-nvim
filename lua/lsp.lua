@@ -15,9 +15,11 @@ require('mason-lspconfig').setup({
         'gopls',
         'lua_ls',
         'rust_analyzer',
-        'godot',
+        --'gdscript',
         'haxe_language_server',
-        'jsonls'
+        'jsonls',
+--		'ccls',
+		'clangd'
     }
 })
 -- Set different settings for different languages' LSP
@@ -34,7 +36,13 @@ lsp_defaults.capabilities = vim.tbl_deep_extend(
   require('cmp_nvim_lsp').default_capabilities()
 )
 
-require'lspconfig'.gdscript.setup{}
+lspconfig.gdscript.setup{}
+
+lspconfig.pylsp.setup{}
+
+-- lspconfig.ccls.setup{}
+
+lspconfig.clangd.setup{}
 
 lspconfig.lua_ls.setup({})
 --[[
@@ -115,10 +123,10 @@ vim.api.nvim_create_autocmd('LspAttach', {
     bufmap('n', 'gl', '<cmd>lua vim.diagnostic.open_float()<cr>')
 
     -- Move to the previous diagnostic
-    bufmap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<cr>')
+    bufmap('n', 'g<Up>', '<cmd>lua vim.diagnostic.goto_prev()<cr>')
 
     -- Move to the next diagnostic
-    bufmap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<cr>')
+    bufmap('n', 'g<Down>', '<cmd>lua vim.diagnostic.goto_next()<cr>')
   end
 })
 

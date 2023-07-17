@@ -7,7 +7,7 @@ local function is_binary_file()
   local binary_ext = { 'png', 'jpg', 'jpeg', 'out', 'ogg', 'wav', 'bin' }
   local ext = string.match(filename, "%.([^%.]+)$")
 
-  if ext == nil and string.match(filename, '[a-z]+') then return true end
+  -- if ext == nil and string.match(filename, '[a-z]+') then return true end
   if vim.tbl_contains(binary_ext, ext) then return true end
 
   return false
