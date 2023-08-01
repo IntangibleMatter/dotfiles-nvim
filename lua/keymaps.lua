@@ -18,7 +18,6 @@ map('n', '<leader>qg', builtin.live_grep, {})
 map('n', '<leader>qb', builtin.buffers, {})
 map('n', '<leader>qh', builtin.help_tags, {})
 ]]--
-
 map('n', '<leader>ss', ":Telescope find_files<CR>", opt)
 map('n', '<leader>sg', ":Telescope live_grep<CR>", opt)
 map('n', '<leader>sb', ":Telescope buffers<CR>", opt)
