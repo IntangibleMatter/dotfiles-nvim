@@ -28,8 +28,8 @@ map('n', '<leader>hd', ":HexDump<CR>", opt)
 map('n', '<leader>ha', ":HexAssemble<CR>", opt)
 map('n', '<leader>hh', ":HexToggle<CR>", opt)
 
-map('n', '<leader>-', ':BufferPrevious<CR>', opt)
-map('n', '<leader>=', ':BufferNext<CR>', opt)
+map('n', '<leader>b-', ':BufferPrevious<CR>', opt)
+map('n', '<leader>b=', ':BufferNext<CR>', opt)
 
 map('n', '<leader>cd', ':cd %:p:h<CR>:pwd<CR>', opt)
 
