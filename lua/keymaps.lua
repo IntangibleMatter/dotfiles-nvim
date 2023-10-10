@@ -8,6 +8,7 @@ vim.g.mapleader = " "
 
 local map = vim.keymap.set
 
+map("n", "<leader>l", ":setlocal spell spelllang=en_ca<cr>", opt)
 map("n", "<leader>f", ":NvimTreeToggle<CR>", opt)
 -- map('n', '<leader>fs', "NvimTreeFindFile", opt)
 map("n", "<leader>t", ":FloatermNew<CR>", opt)
