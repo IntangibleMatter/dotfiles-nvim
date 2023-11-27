@@ -53,7 +53,6 @@ return require("packer").startup(function(use)
 	use("bluz71/vim-moonfly-colors")
 	use("dasupradyumna/midnight.nvim")
 	use("oxfist/night-owl.nvim")
-
 	--    use 'tanvirtin/monokai.nvim'
 
 	use({
@@ -134,6 +133,7 @@ return require("packer").startup(function(use)
 		end,
 	})
 
+	use 'ray-x/go.nvim'
 	use({
 		"goolord/alpha-nvim",
 		requires = { "nvim-tree/nvim-web-devicons" },

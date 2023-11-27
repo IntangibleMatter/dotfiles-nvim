@@ -42,6 +42,8 @@ lspconfig.pylsp.setup({})
 
 lspconfig.haxe_language_server.setup({})
 
+lspconfig.gopls.setup({})
+
 -- lspconfig.ccls.setup{}
 
 lspconfig.clangd.setup({})
