@@ -22,7 +22,7 @@ moonfly
 ]]
 --
 
-local colorscheme = "tokyonight-night"
+local colorscheme = "tokyodark"
 
 local dracula = require("dracula")
 dracula.setup({
