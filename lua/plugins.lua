@@ -45,7 +45,7 @@ return require("packer").startup(function(use)
 			hl = { underline = true },
 		},
 	})
-	use("folke/tokyonight.nvim")
+	use("ghifarit53/tokyonight-vim")
 	use("Mofiqul/dracula.nvim")
 	use("ayu-theme/ayu-vim")
 	use("rebelot/kanagawa.nvim")
@@ -53,6 +53,10 @@ return require("packer").startup(function(use)
 	use("bluz71/vim-moonfly-colors")
 	use("dasupradyumna/midnight.nvim")
 	use("oxfist/night-owl.nvim")
+	use("tomasr/molokai")
+	use("NLKNguyen/papercolor-theme")
+	use("nanotech/jellybeans.vim")
+	use("tiagovla/tokyodark.nvim")
 	--    use 'tanvirtin/monokai.nvim'
 
 	use({
