@@ -152,8 +152,7 @@ return require("packer").startup(function(use)
 	-- use 'nvim-telescope/telescope.nvim'
 	use({
 		"nvim-telescope/telescope.nvim",
-		tag = "0.1.1",
-		-- or                            , branch = '0.1.x',
+		branch = "0.1.x",
 		requires = { { "nvim-lua/plenary.nvim" }, { "BurntSushi/ripgrep" } },
 	})
 	--  use 'vimwiki/vimwiki'
@@ -182,7 +181,7 @@ return require("packer").startup(function(use)
 	use({ "lewis6991/gitsigns.nvim" })
 	use({ "beauwilliams/focus.nvim" })
 	use({ "mhartington/formatter.nvim" })
-
+	use("Eandrju/cellular-automaton.nvim")
 	use({
 		"windwp/nvim-autopairs",
 		config = function()
