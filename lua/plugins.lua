@@ -136,7 +136,7 @@ return require("packer").startup(function(use)
 			})
 		end,
 	})
-
+	use("vlime/vlime")
 	-- use("ray-x/go.nvim")
 	use({
 		"goolord/alpha-nvim",
@@ -155,6 +155,7 @@ return require("packer").startup(function(use)
 		branch = "0.1.x",
 		requires = { { "nvim-lua/plenary.nvim" }, { "BurntSushi/ripgrep" } },
 	})
+	--
 	--  use 'vimwiki/vimwiki'
 	use("echasnovski/mini.indentscope")
 	use("MunifTanjim/nui.nvim")
@@ -182,6 +183,8 @@ return require("packer").startup(function(use)
 	use({ "beauwilliams/focus.nvim" })
 	use({ "mhartington/formatter.nvim" })
 	use("Eandrju/cellular-automaton.nvim")
+	use("jakewvincent/mkdnflow.nvim")
+
 	use({
 		"windwp/nvim-autopairs",
 		config = function()
