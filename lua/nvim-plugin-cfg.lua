@@ -243,6 +243,9 @@ require("nvim-tree").setup({
 	},
 })
 require("telescope").load_extension("projects")
+
+-- run this command to create the lisp thing
+-- !sbcl sbcl --load /home/intangible/.local/share/nvim/site/pack/packer/start/vlime/lisp/start-vlime.lisp
 --[[
 vim.g.barbar_auto_setup = false
 
