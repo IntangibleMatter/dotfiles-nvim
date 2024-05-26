@@ -155,7 +155,7 @@ return require("packer").startup(function(use)
 		branch = "0.1.x",
 		requires = { { "nvim-lua/plenary.nvim" }, { "BurntSushi/ripgrep" } },
 	})
-	--
+	use("andweeb/presence.nvim")
 	--  use 'vimwiki/vimwiki'
 	use("echasnovski/mini.indentscope")
 	use("MunifTanjim/nui.nvim")
