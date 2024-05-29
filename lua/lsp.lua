@@ -283,9 +283,9 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.s
 
 vim.filetype.add({
 	extension = {
-		lspgd = "clojure",
-		lispdot = "clojure",
-		gdlisp = "clojure",
-		lispgd = "clojure",
+		lspgd = "commonlisp",
+		lispdot = "commonlisp",
+		gdlisp = "commonlisp",
+		lispgd = "commonlisp",
 	},
 })
