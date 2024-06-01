@@ -46,6 +46,7 @@ return require("packer").startup(function(use)
 		},
 	})
 	use("ghifarit53/tokyonight-vim")
+	use("folke/tokyonight.nvim")
 	use("Mofiqul/dracula.nvim")
 	use("ayu-theme/ayu-vim")
 	use("rebelot/kanagawa.nvim")
