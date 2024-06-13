@@ -217,7 +217,7 @@ parser_config.asm6502 = {
 	},
 	filetype = "s", -- if filetype does not match the parser name
 }
-
+--[[
 parser_config = require("nvim-treesitter.parsers").get_parser_configs()
 parser_config.haxe = {
 	install_info = {
@@ -231,6 +231,31 @@ parser_config.haxe = {
 vim.filetype.add({
 	extension = {
 		hx = "haxe",
+	},
+})]]
+--
+local configs = require("nvim-treesitter.configs")
+configs.setup({
+	ensure_installed = { "haxe" }, -- Install the Haxe parser
+	highlight = {
+		enable = true, -- false will disable the whole extension
+		additional_vim_regex_highlighting = false,
+	},
+})
+parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+parser_config.haxe = {
+	install_info = {
+		url = "https://github.com/vantreeseba/tree-sitter-haxe",
+		files = { "src/parser.c" },
+		-- optional entries:
+		branch = "main",
+	},
+	filetype = "haxe",
+}
+vim.filetype.add({
+	extension = {
+		hx = "haxe",
+		hxc = "haxe",
 	},
 })
 -- lua

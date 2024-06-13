@@ -23,7 +23,7 @@ require("mason-lspconfig").setup({
 		--'gdscript',
 		"haxe_language_server",
 		"jsonls",
-		--'clangd'
+		"clangd",
 		--		'ccls',
 	},
 })
