@@ -46,6 +46,28 @@ map("n", "<leader>ws", function()
 	require("focus").split_nicely()
 end, { desc = "split nicely" })
 map("n", "<leader>we", ":FocusSplitCycle<CR>", opt)
+--[[
+map("n", "<leader>on", ":ObsidianNew<CR>", opt)
+map("n", "<leader>oqs", ":ObsidianQuickSwitch<CR>", opt)
+map("n", "<leader>ot", ":ObsidianToday<CR>", opt)
+map("n", "<leader>oy", ":ObsidianYesterday<CR>", opt)
+map("n", "<leader>of", ":ObsidianTomorrow<CR>", opt)
+map("n", "<leader>olf", ":ObsidianFollowLink<CR>", opt)
+map("n", "<leader>olb", ":ObsidianBacklinks<CR>", opt)
+map("n", "<leader>oll", ":ObsidianLink<CR>", opt)
+map("n", "<leader>oln", ":ObsidianLinkNew<CR>", opt)
+map("n", "<leader>on", ":ObsidianNew<CR>", opt)
+]]
+--
+map("n", "<leader>cs", ":TimerShow<CR>", opt)
+map("n", "<leader>ch", ":TimerHide<CR>", opt)
+map("n", "<leader>cp", ":TimerPause<CR>", opt)
+map("n", "<leader>cs", ":TimerShow<CR>", opt)
+map("n", "<leader>cc", ":TimerStart", opt) -- to let config happen
+map("n", "<leader>cgw", ":TimerSession work<CR>", opt)
+map("n", "<leader>ct", function()
+	require("telescope").extensions.pomodori.timers()
+end, opt)
 
 --[[
 -----------------

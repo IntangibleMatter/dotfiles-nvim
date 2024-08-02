@@ -5,6 +5,21 @@ opt.foldmethod = "expr"
 opt.foldexpr = "nvim_treesitter#foldexpr()"
 
 vim.o.foldlevelstart = 99
+
+opt.conceallevel = 1
+--[[
+vim.api.nvim_create_augroup("AutoFormat", {})
+
+vim.api.nvim_create_autocmd("BufWritePre", {
+	pattern = "*.rs",
+	group = "AutoFormat",
+	callback = function()
+		vim.cmd("silent RustFmt")
+		vim.cmd("edit")
+	end,
+})
+]]
+--
 --[[
 -- local M = {}
 -- function to create a list of commands and convert them to autocommands
@@ -28,11 +43,13 @@ local autoCommands = {
         {"BufReadPost,FileReadPost", "*", "normal zR"}
     }
 }
-]]--
+]]
+--
 --nvim_create_augroups(autoCommands)
 --[[
 api.nvim_create_autocmd(
 	{ "BufReadPost", "FileReadPost" },
 	{ pattern = "*", command = "normal zR" }
 )
-]]--
+]]
+--

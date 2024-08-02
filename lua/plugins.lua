@@ -108,12 +108,34 @@ return require("packer").startup(function(use)
 	})
 	use("mechatroner/rainbow_csv")
 	use("godlygeek/tabular")
-	use("simrat39/rust-tools.nvim")
+	use("mrcjkb/rustaceanvim")
+	use("Saecki/crates.nvim")
 	use("nvim-lua/plenary.nvim")
 	use("mfussenegger/nvim-dap")
 	use("nvim-treesitter/nvim-treesitter")
 	use("nvim-tree/nvim-web-devicons")
 	use("projekt0n/github-nvim-theme")
+
+	--[[	use({
+		"epwalsh/obsidian.nvim",
+		tag = "*", -- recommended, use latest release instead of latest commit
+		requires = {
+			-- Required.
+			"nvim-lua/plenary.nvim",
+
+			-- see below for full list of optional dependencies 👇
+		},
+	})
+	]]
+	--
+	use({
+		"epwalsh/pomo.nvim",
+		tag = "*", -- Recommended, use latest release instead of latest commit
+		requires = {
+			-- Optional, but highly recommended if you want to use the "Default" timer
+			"rcarriga/nvim-notify",
+		},
+	})
 	--    use 'nvim-tree/nvim-tree.lua'
 	use({
 		"nvim-tree/nvim-tree.lua",

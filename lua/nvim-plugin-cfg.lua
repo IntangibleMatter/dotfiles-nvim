@@ -267,8 +267,115 @@ require("nvim-tree").setup({
 		update_root = true,
 	},
 })
-require("telescope").load_extension("projects")
+local telescope = require("telescope")
+telescope.load_extension("projects")
+telescope.load_extension("pomodori")
 
+require("crates").setup()
+--[[
+require("obsidian").setup({
+	workspaces = {
+		{
+			name = "wiki",
+			path = "~/Documents/vaults/wiki",
+		},
+		{
+			name = "personal",
+			path = "~/Documents/vaults/personal",
+		},
+		{
+			name = "school",
+			path = "~/Documents/vaults/school",
+		},
+		{
+			name = "gamedev",
+			path = "~/Documents/vaults/gamedev",
+		},
+	},
+	completion = {
+		nvim_cmp = true,
+	},
+
+	mappings = {
+		["gf"] = {
+			action = function()
+				return require("obsidian").util.gf_passthrough()
+			end,
+			opts = { noremap = false, expr = true, buffer = true },
+		},
+		["<leader>ob"] = {
+			action = function()
+				return require("obsidian").util.toggle_checkbox()
+			end,
+			opts = { buffer = true },
+		},
+	},
+	["<CR>"] = {
+		action = function()
+			return require("obsidian").util.smart_action()
+		end,
+		opts = { buffer = true, expr = true },
+	},
+
+	--[[	note_id_func = function(title)
+		local suffix = ""
+		-- If title is given, transform it into valid file name.
+		if title ~= nil then
+			suffix = title:gsub(" ", "-"):gsub("[^A-Za-z0-9-]", ""):lower()
+		else
+			suffix = "UNNAMED"
+		end
+	end,]
+	--
+	note_id_func = function(title)
+		-- Create note IDs in a Zettelkasten format with a timestamp and a suffix.
+		-- In this case a note with the title 'My new note' will be given an ID that looks
+		-- like '1657296016-my-new-note', and therefore the file name '1657296016-my-new-note.md'
+		local suffix = ""
+		if title ~= nil then
+			-- If title is given, transform it into valid file name.
+			suffix = title:gsub(" ", "-"):gsub("[^A-Za-z0-9-]", ""):lower()
+		else
+			-- If title is nil, just add 4 random uppercase letters to the suffix.
+			for _ = 1, 4 do
+				suffix = suffix .. string.char(math.random(65, 90))
+			end
+		end
+		local date = os.date("%Y-%m-%d")
+
+		return date .. "-" .. suffix .. "-" .. string.sub(tostring(os.time()), -4)
+	end,
+})
+]]
+--
+require("pomo").setup({
+	update_interval = 1000,
+
+	notifiers = {
+		{
+			name = "Default",
+			opts = {
+				title_icon = "󱎫",
+				text_icon = "󰄉",
+			},
+		},
+
+		{ name = "System" },
+	},
+
+	timers = {},
+
+	sessions = {
+		work = {
+			{ name = "Work", duration = "25m" },
+			{ name = "Short Break", duration = "5m" },
+			{ name = "Work", duration = "25m" },
+			{ name = "Short Break", duration = "5m" },
+			{ name = "Work", duration = "25m" },
+			{ name = "Long Break", duration = "15m" },
+		},
+	},
+})
 -- run this command to create the lisp thing
 -- !sbcl sbcl --load /home/intangible/.local/share/nvim/site/pack/packer/start/vlime/lisp/start-vlime.lisp
 --[[

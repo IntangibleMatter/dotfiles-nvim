@@ -16,7 +16,7 @@ require("mason-lspconfig").setup({
 		"pylsp",
 		"gopls",
 		"lua_ls",
-		"rust_analyzer",
+		--"rust_analyzer",
 		"csharp_ls",
 		"quick_lint_js",
 		"marksman",
@@ -49,7 +49,8 @@ lspconfig.gopls.setup({})
 lspconfig.csharp_ls.setup({})
 -- lspconfig.ccls.setup{}
 
-lspconfig.rust_analyzer.setup({})
+-- conflict with other rust plugin
+--lspconfig.rust_analyzer.setup({})
 
 lspconfig.clangd.setup({})
 
