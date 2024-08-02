@@ -49,6 +49,8 @@ lspconfig.gopls.setup({})
 lspconfig.csharp_ls.setup({})
 -- lspconfig.ccls.setup{}
 
+lspconfig.rust_analyzer.setup({})
+
 lspconfig.clangd.setup({})
 
 --lspconfig.lua_ls.setup({})
