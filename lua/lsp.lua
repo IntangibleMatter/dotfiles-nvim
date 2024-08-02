@@ -289,3 +289,9 @@ vim.filetype.add({
 		lispgd = "commonlisp",
 	},
 })
+
+vim.filetype.add({
+	extension = {
+		p8 = "lua",
+	},
+})
