@@ -6,7 +6,7 @@ opt.foldexpr = "nvim_treesitter#foldexpr()"
 
 vim.o.foldlevelstart = 99
 
-opt.conceallevel = 1
+opt.conceallevel = 0
 --[[
 vim.api.nvim_create_augroup("AutoFormat", {})
 

@@ -69,9 +69,10 @@ require("gitsigns").setup({
 		row = 0,
 		col = 1,
 	},
-	yadm = {
+	--[[yadm = {
 		enable = false,
-	},
+	},]]
+	--
 	-- keymaps
 	on_attach = function(bufnr)
 		local gs = package.loaded.gitsigns
@@ -175,7 +176,9 @@ require("nvim-treesitter.configs").setup({
 	auto_install = true,
 
 	-- List of parsers to ignore installing (for "all")
-	ignore_install = { "javascript" },
+	ignore_install = {
+		"tsv",
+	},
 
 	---- If you need to change the installation directory of the parsers (see -> Advanced Setup)
 	-- parser_install_dir = "/some/path/to/store/parsers", -- Remember to run vim.opt.runtimepath:append("/some/path/to/store/parsers")!
@@ -235,13 +238,14 @@ vim.filetype.add({
 })]]
 --
 local configs = require("nvim-treesitter.configs")
-configs.setup({
+--[[configs.setup({
 	ensure_installed = { "haxe" }, -- Install the Haxe parser
 	highlight = {
 		enable = true, -- false will disable the whole extension
 		additional_vim_regex_highlighting = false,
 	},
-})
+})]]
+--
 parser_config = require("nvim-treesitter.parsers").get_parser_configs()
 parser_config.haxe = {
 	install_info = {
@@ -409,7 +413,14 @@ require("pomo").setup({
 	},
 })
 
+require("overseer").setup()
+
 require("treesitter-context").setup()
+
+--require("rainbow_csv").setup()
+
+--require("csvview").setup()
+
 -- run this command to create the lisp thing
 -- !sbcl sbcl --load /home/intangible/.local/share/nvim/site/pack/packer/start/vlime/lisp/start-vlime.lisp
 --[[

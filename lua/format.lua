@@ -51,6 +51,43 @@ require("formatter").setup({
 				return { exe = "gdformat" }
 			end,
 		},
+
+		json = {
+			require("formatter.filetypes.json").fixjson,
+		},
+
+		go = {
+			require("formatter.filetypes.go").gofmt,
+		},
+
+		html = {
+			require("formatter.filetypes.html").prettier,
+		},
+
+		python = {
+			require("formatter.filetypes.python").autopep8,
+		},
+
+		markdown = {
+			require("formatter.filetypes.markdown").prettier,
+		},
+
+		cpp = {
+			require("formatter.filetypes.cpp").clangformat,
+		},
+
+		c = {
+			require("formatter.filetypes.c").clangformat,
+		},
+
+		css = {
+			require("formatter.filetypes.css").prettier,
+		},
+
+		scss = {
+			require("formatter.filetypes.css").prettier,
+		},
+
 		-- Use the special "*" filetype for defining formatter configurations on
 		-- any filetype
 		["*"] = {

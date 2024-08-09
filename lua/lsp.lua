@@ -21,7 +21,7 @@ require("mason-lspconfig").setup({
 		"quick_lint_js",
 		"marksman",
 		--'gdscript',
-		"haxe_language_server",
+		--		"haxe_language_server",
 		"jsonls",
 		"clangd",
 		--		'ccls',
@@ -42,12 +42,31 @@ lspconfig.gdscript.setup({})
 
 lspconfig.pylsp.setup({})
 
-lspconfig.haxe_language_server.setup({})
+-- lspconfig.haxe_language_server.setup({})
 
 lspconfig.gopls.setup({})
 
 lspconfig.csharp_ls.setup({})
+
+lspconfig.marksman.setup({})
 -- lspconfig.ccls.setup{}
+
+lspconfig.jsonls.setup({
+	settings = {
+		json = {
+			schemas = require("schemastore").json.schemas(),
+			validate = { enable = true },
+		},
+	},
+	extra = {
+		{
+			description = "LuaLS",
+			fileMatch = ".luarc.json",
+			name = ".luarc.json",
+			url = "https://raw.githubusercontent.com/sumneko/vscode-lua/master/setting/schema.json",
+		},
+	},
+})
 
 -- conflict with other rust plugin
 --lspconfig.rust_analyzer.setup({})
@@ -86,6 +105,10 @@ lspconfig.lua_ls.setup({
 		return true
 	end,
 })
+
+lspconfig.cssls.setup({})
+
+lspconfig.gdshader_lsp.setup({})
 --[[
 -- Customized on_attach function
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -128,13 +151,16 @@ lspconfig.pylsp.setup({
 vim.api.nvim_create_autocmd("LspAttach", {
 	desc = "LSP actions",
 	callback = function()
-		local bufmap = function(mode, lhs, rhs)
+		local bufmap = function(mode, lhs, rhs, desc)
 			local opts = { buffer = true }
+			if desc ~= nil then
+				opts.desc = desc
+			end
 			vim.keymap.set(mode, lhs, rhs, opts)
 		end
 
 		-- Displays hover information about the symbol under the cursor
-		bufmap("n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>")
+		bufmap("n", "gk", "<cmd>lua vim.lsp.buf.hover()<cr>")
 
 		-- Jump to the definition
 		bufmap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>")

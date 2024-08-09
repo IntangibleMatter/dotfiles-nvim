@@ -211,7 +211,8 @@ return require("packer").startup(function(use)
 	use({ "mhartington/formatter.nvim" })
 	use("Eandrju/cellular-automaton.nvim")
 	use("jakewvincent/mkdnflow.nvim")
-
+	use("b0o/schemastore.nvim")
+	use("stevearc/overseer.nvim")
 	use({
 		"windwp/nvim-autopairs",
 		config = function()
@@ -229,6 +230,7 @@ return require("packer").startup(function(use)
 			})
 		end,
 	})
+	--use("intangiblematter/csvview.nvim")
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if packer_bootstrap then
