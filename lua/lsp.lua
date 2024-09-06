@@ -22,7 +22,7 @@ require("mason-lspconfig").setup({
 		"marksman",
 		--'gdscript',
 		--		"haxe_language_server",
-		"jsonls",
+		--"jsonls",
 		"clangd",
 		--		'ccls',
 	},
