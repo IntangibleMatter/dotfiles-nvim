@@ -417,6 +417,8 @@ require("overseer").setup()
 
 require("treesitter-context").setup()
 
+require("remote-nvim").setup()
+
 --require("rainbow_csv").setup()
 
 --require("csvview").setup()

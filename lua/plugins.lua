@@ -185,6 +185,7 @@ return require("packer").startup(function(use)
 	use("andweeb/presence.nvim")
 	--  use 'vimwiki/vimwiki'
 	use("echasnovski/mini.indentscope")
+	use("amitds1997/remote-nvim.nvim")
 	use("MunifTanjim/nui.nvim")
 	use("rcarriga/nvim-notify")
 	--    use 'folke/noice.nvim'

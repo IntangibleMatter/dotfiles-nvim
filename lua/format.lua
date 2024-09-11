@@ -5,13 +5,43 @@ local clangformat = function()
 	return {
 		exe = "clang-format",
 		args = {
-			"--style={UseTab: Always, IndentWidth: 4, TabWidth: 4}",
 			"-assume-filename",
 			util.escape_path(util.get_current_buffer_file_name()),
+			--"-style={UseTab: Always, IndentWidth: 4, TabWidth: 4}",
 		},
 		stdin = true,
-		try_node_modules = true,
+		--try_node_modules = true,
 	}
+end
+
+local prettier = function()
+	return function(parser)
+		if not parser then
+			return {
+				exe = "prettier",
+				args = {
+					"--use-tabs",
+					"--stdin-filepath",
+					util.escape_path(util.get_current_buffer_file_path()),
+				},
+				stdin = true,
+				try_node_modules = true,
+			}
+		end
+
+		return {
+			exe = "prettier",
+			args = {
+				"--use-tabs",
+				"--stdin-filepath",
+				util.escape_path(util.get_current_buffer_file_path()),
+				"--parser",
+				parser,
+			},
+			stdin = true,
+			try_node_modules = true,
+		}
+	end
 end
 
 -- Provides the Format, FormatWrite, FormatLock, and FormatWriteLock commands
@@ -73,16 +103,13 @@ require("formatter").setup({
 			require("formatter.filetypes.go").gofmt,
 		},
 
-		html = {
-			require("formatter.filetypes.html").prettier,
-		},
-
 		python = {
 			require("formatter.filetypes.python").autopep8,
 		},
 
-		--[[		markdown = {
-			require("formatter.filetypes.markdown").prettier,
+		--[[markdown = {
+			--	require("formatter.filetypes.markdown").prettier,
+			prettier,
 		},]]
 		--
 
@@ -99,11 +126,17 @@ require("formatter").setup({
 		},
 
 		css = {
-			require("formatter.filetypes.css").prettier,
+			prettier,
+			--require("formatter.filetypes.css").prettier,
 		},
 
 		scss = {
-			require("formatter.filetypes.css").prettier,
+			prettier,
+			--require("formatter.filetypes.css").prettier,
+		},
+
+		html = {
+			prettier,
 		},
 
 		-- Use the special "*" filetype for defining formatter configurations on
