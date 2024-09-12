@@ -4,6 +4,14 @@ local opt = {
 	silent = true, -- do not show message
 }
 
+local function optd(descr)
+	return {
+		noremap = true,
+		silent = true,
+		desc = descr,
+	}
+end
+
 vim.g.mapleader = " "
 
 local map = vim.keymap.set
@@ -68,6 +76,26 @@ map("n", "<leader>cgw", ":TimerSession work<CR>", opt)
 map("n", "<leader>ct", function()
 	require("telescope").extensions.pomodori.timers()
 end, opt)
+
+--EasyTables
+for i = 1, 9, 1 do
+	map(
+		"n",
+		"<leader>es" .. tostring(i),
+		":EasyTablesCreateNew " .. tostring(i) .. "<CR>",
+		optd("New " .. tostring(i) .. "x" .. tostring(i) .. " table")
+	)
+	for j = 1, 9, 1 do
+		map(
+			"n",
+			"<leader>en" .. tostring(i) .. tostring(j),
+			":EasyTablesCreateNew " .. tostring(i) .. "x" .. tostring(j) .. "<CR>",
+			optd("New " .. tostring(i) .. "x" .. tostring(j) .. " table")
+		)
+	end
+end
+map("n", "<leader>ee", ":EasyTablesImportThisTable<CR>", optd("Import table to edit"))
+map("n", "<leader>ew", ":ExportTable<CR>", optd("Export Table"))
 
 --[[
 -----------------
