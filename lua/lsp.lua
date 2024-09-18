@@ -8,25 +8,33 @@ require("mason").setup({
 			package_uninstalled = "✗",
 		},
 	},
+	ensure_installed = {
+
+		lsp = {
+			"pylsp",
+			"gopls",
+			"lua_ls",
+			-- Wht is this giving a warning? Installs fine
+			--		"gdtoolkit",
+			--"rust_analyzer",
+			"csharp_ls",
+			"quick_lint_js",
+			"marksman",
+			--'gdscript',
+			"haxe_language_server",
+			--"jsonls",
+			"clangd",
+			--		'ccls',
+		},
+		formatter = {
+			"gdtoolkit",
+			"mdformat",
+		},
+	},
 })
 
 require("mason-lspconfig").setup({
 	-- A list of servers to automatically install if they're not already installed
-	ensure_installed = {
-		"pylsp",
-		"gopls",
-		"lua_ls",
-		"gdtoolkit",
-		--"rust_analyzer",
-		"csharp_ls",
-		"quick_lint_js",
-		"marksman",
-		--'gdscript',
-		"haxe_language_server",
-		--"jsonls",
-		"clangd",
-		--		'ccls',
-	},
 })
 -- Set different settings for different languages' LSP
 -- LSP list: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
@@ -50,6 +58,8 @@ lspconfig.gopls.setup({})
 lspconfig.csharp_ls.setup({})
 
 lspconfig.marksman.setup({})
+
+lspconfig.glsl_analyzer.setup({})
 -- lspconfig.ccls.setup{}
 
 lspconfig.jsonls.setup({

@@ -1,5 +1,6 @@
 -- Utilities for creating configurations
 local util = require("formatter.util")
+local defaults = require("formatter.defaults")
 
 local clangformat = function()
 	return {
@@ -15,24 +16,25 @@ local clangformat = function()
 end
 
 local prettier = function()
-	return function(parser)
-		if not parser then
-			return {
-				exe = "prettier",
-				args = {
-					"--use-tabs",
-					"--stdin-filepath",
-					util.escape_path(util.get_current_buffer_file_path()),
-				},
-				stdin = true,
-				try_node_modules = true,
-			}
-		end
+	--return function(parser)
+	--	if not parser then
+	return {
+		exe = "prettier",
+		args = {
+			"--use-tabs true",
+			"--tab-width 4",
+			"--stdin-filepath",
+			util.escape_path(util.get_current_buffer_file_path()),
+		},
+		stdin = true,
+		try_node_modules = true,
+	}
+	--	end
 
-		return {
+	--[[]	return {
 			exe = "prettier",
 			args = {
-				"--use-tabs",
+				"--use-tabs true",
 				"--stdin-filepath",
 				util.escape_path(util.get_current_buffer_file_path()),
 				"--parser",
@@ -41,7 +43,8 @@ local prettier = function()
 			stdin = true,
 			try_node_modules = true,
 		}
-	end
+	end]]
+	--
 end
 
 -- Provides the Format, FormatWrite, FormatLock, and FormatWriteLock commands
@@ -107,9 +110,18 @@ require("formatter").setup({
 			require("formatter.filetypes.python").autopep8,
 		},
 
+		-- why does no markdown formatter use tabs
 		--[[markdown = {
-			--	require("formatter.filetypes.markdown").prettier,
-			prettier,
+			function()
+				return {
+					exe = "mdformat",
+					args = {
+						"--number",
+						"--wrap 80",
+						util.escape_path(util.get_current_buffer_file_path()),
+					},
+				}
+			end,
 		},]]
 		--
 
@@ -139,6 +151,13 @@ require("formatter").setup({
 			prettier,
 		},
 
+		js = {
+			prettier,
+		},
+
+		ts = {
+			prettier,
+		},
 		-- Use the special "*" filetype for defining formatter configurations on
 		-- any filetype
 		["*"] = {
