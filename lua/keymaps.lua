@@ -97,6 +97,12 @@ end
 map("n", "<leader>ee", ":EasyTablesImportThisTable<CR>", optd("Import table to edit"))
 map("n", "<leader>ew", ":ExportTable<CR>", optd("Export Table"))
 
+map("n", "<leader>mdp", ":MarkdownPreviewToggle<CR>", opt)
+--map("n", "<leader>mds", ":MarkdownPreviewStop", opt)
+--map("n", "<leader>pp", ":LatexPreviewToggle<CR>", opt)
+--map("n", "<leader>p[", ":PrevLatexPreviewMode<CR>", opt)
+--map("n", "<leader>p]", ":NextLatexPreviewMode<CR>", opt)
+
 --[[
 -----------------
 -- Normal mode --

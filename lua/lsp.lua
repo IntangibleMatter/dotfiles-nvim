@@ -120,6 +120,8 @@ lspconfig.lua_ls.setup({
 lspconfig.cssls.setup({})
 
 lspconfig.gdshader_lsp.setup({})
+
+lspconfig.ts_ls.setup({}) --{ cmd = { "typescript-language-server", "--JSX", "--stdio" } })
 --[[
 -- Customized on_attach function
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions

@@ -111,6 +111,21 @@ return require("packer").startup(function(use)
 	use("mrcjkb/rustaceanvim")
 	use("Saecki/crates.nvim")
 	use("nvim-lua/plenary.nvim")
+	--use("anthonymolinari/latex_preview.nvim")
+	--use("emakman/nvim-latex-previewer")
+	use("lervag/vimtex")
+	use({
+		"iamcco/markdown-preview.nvim",
+		run = "cd app && npm install",
+		setup = function()
+			vim.g.mkdp_filetypes = { "markdown" }
+		end,
+		ft = { "markdown" },
+	})
+	--
+	--use("edluffy/hologram.nvim")
+	--use("Vaisakhkm2625/hologram-math-preview.nvim")
+	use("3rd/image.nvim")
 	use("mfussenegger/nvim-dap")
 	use("nvim-treesitter/nvim-treesitter")
 	use("Myzel394/easytables.nvim")

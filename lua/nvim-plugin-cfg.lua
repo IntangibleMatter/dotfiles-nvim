@@ -425,6 +425,11 @@ require("remote-nvim").setup()
 
 require("easytables").setup()
 
+-- missing a dependency and I don't wanna fix it rn
+--require("image").setup()
+--[[require("hologram").setup({
+	auto_display = true, -- WIP automatic markdown image display, may be prone to breaking
+})]]--
 -- run this command to create the lisp thing
 -- !sbcl sbcl --load /home/intangible/.local/share/nvim/site/pack/packer/start/vlime/lisp/start-vlime.lisp
 --[[
