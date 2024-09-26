@@ -151,12 +151,21 @@ require("formatter").setup({
 			prettier,
 		},
 
-		js = {
-			prettier,
+		javascript = {
+			--clangformat,
+			--prettier,
+			require("formatter.filetypes.javascript").prettier,
 		},
 
-		ts = {
-			prettier,
+		typescript = {
+			--clangformat,
+			--	prettier,
+			require("formatter.filetypes.typescript").prettier,
+		},
+
+		typescriptreact = {
+			require("formatter.filetypes.typescriptreact").prettier,
+			--clangformat,
 		},
 		-- Use the special "*" filetype for defining formatter configurations on
 		-- any filetype
