@@ -98,10 +98,6 @@ require("formatter").setup({
 			end,
 		},
 
-		json = {
-			require("formatter.filetypes.json").fixjson,
-		},
-
 		go = {
 			require("formatter.filetypes.go").gofmt,
 		},
@@ -138,19 +134,27 @@ require("formatter").setup({
 		},
 
 		css = {
-			prettier,
+			--prettier,
+			require("formatter.filetypes.css").prettier,
 			--require("formatter.filetypes.css").prettier,
 		},
 
 		scss = {
-			prettier,
+			--prettier,
+			require("formatter.filetypes.css").prettier,
 			--require("formatter.filetypes.css").prettier,
 		},
 
 		html = {
-			prettier,
+			--prettier,
+			require("formatter.filetypes.html").prettier,
 		},
 
+		json = {
+			--require("formatter.filetypes.json").fixjson,
+			require("formatter.filetypes.javascript").prettier,
+			--prettier,
+		},
 		javascript = {
 			--clangformat,
 			--prettier,
