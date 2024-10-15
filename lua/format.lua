@@ -98,6 +98,12 @@ require("formatter").setup({
 			end,
 		},
 
+		arduino = {
+			clangformat,
+		},
+
+		--pde = { clangformat },
+
 		go = {
 			require("formatter.filetypes.go").gofmt,
 		},
@@ -140,8 +146,8 @@ require("formatter").setup({
 		},
 
 		scss = {
-			--prettier,
-			require("formatter.filetypes.css").prettier,
+			prettier,
+			--require("formatter.filetypes.scss").prettier,
 			--require("formatter.filetypes.css").prettier,
 		},
 

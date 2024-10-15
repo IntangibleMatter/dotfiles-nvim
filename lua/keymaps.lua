@@ -98,11 +98,26 @@ map("n", "<leader>ee", ":EasyTablesImportThisTable<CR>", optd("Import table to e
 map("n", "<leader>ew", ":ExportTable<CR>", optd("Export Table"))
 
 map("n", "<leader>mdp", ":MarkdownPreviewToggle<CR>", opt)
+map("n", "<leader>mdv", ":Markview<CR>", opt)
+map("n", "<leader>mds", ":Markview splitToggle<CR>", opt)
+
 --map("n", "<leader>mds", ":MarkdownPreviewStop", opt)
 --map("n", "<leader>pp", ":LatexPreviewToggle<CR>", opt)
 --map("n", "<leader>p[", ":PrevLatexPreviewMode<CR>", opt)
 --map("n", "<leader>p]", ":NextLatexPreviewMode<CR>", opt)
 
+-- Keyboard users
+map("n", "<C-t>", function()
+	require("menu").open("default")
+end, opt)
+
+-- mouse users + nvimtree users!
+map("n", "<RightMouse>", function()
+	vim.cmd.exec('"normal! \\<RightMouse>"')
+
+	local options = vim.bo.ft == "NvimTree" and "nvimtree" or "default"
+	require("menu").open(options, { mouse = true })
+end, {})
 --[[
 -----------------
 -- Normal mode --

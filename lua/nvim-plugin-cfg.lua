@@ -232,7 +232,7 @@ parser_config.haxe = {
 	filetype = "haxe",
 }
 vim.filetype.add({
-	extension = {
+extension = {
 		hx = "haxe",
 	},
 })]]
@@ -425,77 +425,297 @@ require("remote-nvim").setup()
 
 require("easytables").setup()
 
--- missing a dependency and I don't wanna fix it rn
---require("image").setup()
---[[require("hologram").setup({
-	auto_display = true, -- WIP automatic markdown image display, may be prone to breaking
-})]]--
--- run this command to create the lisp thing
--- !sbcl sbcl --load /home/intangible/.local/share/nvim/site/pack/packer/start/vlime/lisp/start-vlime.lisp
---[[
-vim.g.barbar_auto_setup = false
+require("markview").setup({
+	__inside_code_block = false,
 
-require("barbar").setup({
-	animation = true,
-
-	auto_hide = false,
-
-	tabpages = true,
-
-	clickable = true,
-
-	focus_on_close = "left",
-
-	icons = {
-		-- Configure the base icons on the bufferline.
-		-- Valid options to display the buffer index and -number are `true`, 'superscript' and 'subscript'
-		buffer_index = false,
-		buffer_number = false,
-		button = "",
-		-- Enables / disables diagnostic symbols
-		diagnostics = {
-			[vim.diagnostic.severity.ERROR] = { enabled = true, icon = "ﬀ" },
-			[vim.diagnostic.severity.WARN] = { enabled = false },
-			[vim.diagnostic.severity.INFO] = { enabled = false },
-			[vim.diagnostic.severity.HINT] = { enabled = true },
-		},
-		gitsigns = {
-			added = { enabled = true, icon = "+" },
-			changed = { enabled = true, icon = "~" },
-			deleted = { enabled = true, icon = "-" },
-		},
-		filetype = {
-			-- Sets the icon's highlight group.
-			-- If false, will use nvim-web-devicons colors
-			custom_colors = false,
-
-			-- Requires `nvim-web-devicons` if `true`
-			enabled = true,
-		},
-		separator = { left = "▎", right = "" },
-
-		-- If true, add an additional separator at the end of the buffer list
-		separator_at_end = true,
-
-		-- Configure the icons on the bufferline when modified or pinned.
-		-- Supports all the base icon options.
-		modified = { button = "●" },
-		pinned = { button = "", filename = true },
-
-		-- Use a preconfigured buffer appearance— can be 'default', 'powerline', or 'slanted'
-		preset = "default",
-
-		-- Configure the icons on the bufferline based on the visibility of a buffer.
-		-- Supports all the base icon options, plus `modified` and `pinned`.
-		alternate = { filetype = { enabled = false } },
-		current = { buffer_index = true },
-		inactive = { button = "×" },
-		visible = { modified = { buffer_number = false } },
+	buf_ignore = {
+		"nofile",
+		"lua",
+		"html",
 	},
-	-- hide = {extensions = true, inactive = true ),
 
-	sidebar_filetypes = {
-		NvimTree = true,
+	debounce = 50,
+
+	filetypes = { "markdown", "quarto", "rmd" },
+
+	highlight_groups = "dynamic",
+	injections = {
+		enable = true,
+
+		languages = {
+			--- Key is the language
+			markdown = {
+				enable = true,
+
+				--- When true, other injections are replaced
+				--- with the ones provided here
+				override = false,
+
+				query = [[
+	                    (section
+	                        (atx_heading)) @fold (#set! @fold)
+	                ]],
+			},
+		},
 	},
-})]]
---
+
+	initial_state = true,
+
+	max_file_length = 1000,
+
+	modes = { "n", "no", "c" },
+
+	render_distance = 100,
+
+	split_conf = {
+		split = "right",
+	},
+
+	block_quotes = {
+		enable = true,
+
+		--- Default configuration for block quotes.
+		default = {
+			--- Text to use as border for the block
+			--- quote.
+			--- Can also be a list if you want multiple
+			--- border types!
+			---@type string | string[]
+			border = "▋",
+
+			--- Highlight group for "border" option. Can also
+			--- be a list to create gradients.
+			---@type (string | string[])?
+			hl = "MarkviewBlockQuoteDefault",
+		},
+
+		--- Configuration for custom block quotes
+		callouts = {
+			{
+				--- String between "[!" & "]"
+				---@type string
+				match_string = "ABSTRACT",
+
+				--- Primary highlight group. Used by other options
+				--- that end with "_hl" when their values are nil.
+				---@type string?
+				hl = "MarkviewBlockQuoteNote",
+
+				--- Text to show in the preview.
+				---@type string
+				preview = "󱉫 Abstract",
+
+				--- Highlight group for the preview text.
+				---@type string?
+				preview_hl = nil,
+
+				--- When true, adds the ability to add a title
+				--- to the block quote.
+				---@type boolean
+				title = true,
+
+				--- Icon to show before the title.
+				---@type string?
+				icon = "󱉫 ",
+
+				---@type string | string
+				border = "▋",
+
+				---@type (string | string[])?
+				border_hl = nil,
+			},
+		},
+	},
+
+	checkboxes = {
+		enable = true,
+
+		checked = {
+			text = "✔",
+			hl = "MarkviewCheckboxChecked",
+			scope_hl = nil,
+		},
+
+		unchecked = {
+
+			text = "✘",
+			hl = "MarkviewCheckboxUnchecked",
+			scope_hl = nil,
+		},
+	},
+
+	code_locks = {
+		enable = true,
+		icons = "internal",
+		style = "language",
+		hl = "MarkviewCode",
+		info_hl = "MarkviewCodeInfo",
+
+		--		min_width = 60,
+		pad_char = "	",
+		language_names = nil,
+		language_direction = "right",
+
+		sign = true,
+		sign_hl = true,
+	},
+
+	footnotes = {
+		enable = true,
+		superscript = true,
+		hl = "Special",
+	},
+
+	headings = {
+		enable = true,
+		shift_width = 1,
+	},
+
+	horizontal_rules = {
+		enable = true,
+	},
+
+	latex = {
+		enable = true,
+		brackets = {
+			enable = true,
+
+			--- Highlight group for the ()
+			---@type string
+			hl = "@punctuation.brackets",
+		},
+
+		--- LaTeX blocks renderer
+		block = {
+			enable = true,
+
+			--- Highlight group for the block
+			---@type string
+			hl = "Code",
+
+			--- Virtual text to show on the bottom
+			--- right.
+			--- First value is the text and second value
+			--- is the highlight group.
+			---@type string[]
+			text = { " LaTeX ", "Special" },
+		},
+
+		--- Configuration for inline LaTeX maths
+		inline = {
+			enable = true,
+		},
+
+		--- Configuration for operators(e.g. "\frac{1}{2}")
+		operators = {
+			enable = true,
+			configs = {
+				sin = {
+					--- Configuration for the extmark added
+					--- to the name of the operator(e.g. "\sin").
+					---
+					--- see `nvim_buf_set_extmark()` for all the
+					--- options.
+					---@type table
+					operator = {
+						conceal = "",
+						virt_text = { { "𝚜𝚒𝚗", "Special" } },
+					},
+
+					--- Configuration for the arguments of this
+					--- operator.
+					--- Item index is used to apply the configuration
+					--- to a specific argument
+					---@type table[]
+					args = {
+						{
+							--- Extmarks are only added
+							--- if a config for it exists.
+
+							--- Configuration for the extmark
+							--- added before this argument.
+							---
+							--- see `nvim_buf_set_extmark` for more.
+							before = {},
+
+							--- Configuration for the extmark
+							--- added after this argument.
+							---
+							--- see `nvim_buf_set_extmark` for more.
+							after = {},
+
+							--- Configuration for the extmark
+							--- added to the range of text of
+							--- this argument.
+							---
+							--- see `nvim_buf_set_extmark` for more.
+							scope = {},
+						},
+					},
+				},
+			},
+		},
+
+		--- Configuration for LaTeX symbols.
+		symbols = {
+			enable = true,
+
+			--- Highlight group for the symbols.
+			---@type string?
+			hl = "@operator.latex",
+
+			--- Allows adding/modifying symbol definitions.
+			overwrite = {
+				--- Symbols can either be strings or functions.
+				--- When the value is a function it receives the buffer
+				--- id as the parameter.
+				---
+				--- The resulting string is then used.
+				---@param buffer integer.
+				today = function(buffer)
+					return os.date("%d %B, %Y")
+				end,
+			},
+
+			--- Create groups of symbols to only change their
+			--- appearance.
+			groups = {
+				{
+					--- Matcher for this group.
+					---
+					--- Can be a list of symbols or a function
+					--- that takes the symbol as the parameter
+					--- and either returns true or false.
+					---
+					---@type string[] | fun(symbol: string): boolean
+					match = { "lim", "today" },
+
+					--- Highlight group for this group.
+					---@type string
+					hl = "Special",
+				},
+			},
+		},
+
+		subscript = {
+			enable = true,
+
+			hl = "MarkviewLatexSubscript",
+		},
+
+		superscript = {
+			enable = true,
+
+			hl = "MarkviewLatexSuperscript",
+		},
+	},
+
+	list_items = {
+		enable = true,
+
+		indent_size = 4,
+	},
+})
+
+-- seems nice but I don't have the time rn
+--require("multicursor-nvim").setup()
