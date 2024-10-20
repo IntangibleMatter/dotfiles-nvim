@@ -262,6 +262,28 @@ vim.filetype.add({
 		hxc = "haxe",
 	},
 })
+-- minecraft filetypes
+
+parser_config.mcfunction = {
+	install_info = {
+		url = "https://github.com/theusaf/tree-sitter-mcfunction-lang",
+		files = { "src/parser.c" },
+		branch = "main",
+	},
+	filetype = "mcfunction",
+}
+
+vim.filetype.add({
+	extension = {
+		mcfunction = "mcfunction",
+	},
+})
+
+vim.filetype.add({
+	extension = {
+		mcmeta = "json",
+	},
+})
 -- lua
 require("nvim-tree").setup({
 	sync_root_with_cwd = true,
@@ -651,6 +673,38 @@ require("markview").setup({
 							--- see `nvim_buf_set_extmark` for more.
 							scope = {},
 						},
+					},
+				},
+				lnot = {
+					operator = {
+						conceal = "",
+						virt_text = { { "¬", "Special" } },
+					},
+				},
+				land = {
+					operator = {
+						conceal = "",
+						virt_text = { { "∧", "Special" } },
+					},
+				},
+
+				lor = {
+					operator = {
+						conceal = "",
+						virt_text = { { "∨", "Special" } },
+					},
+				},
+
+				Leftrightarrow = {
+					operator = {
+						conceal = "",
+						virt_text = { { "⇔", "Special" } },
+					},
+				},
+				rightarrow = {
+					operator = {
+						conceal = "",
+						virt_text = { { "→", "Special" } },
 					},
 				},
 			},

@@ -158,8 +158,8 @@ require("formatter").setup({
 
 		json = {
 			--require("formatter.filetypes.json").fixjson,
-			require("formatter.filetypes.javascript").prettier,
-			--prettier,
+			--require("formatter.filetypes.javascript").prettier,
+			prettier,
 		},
 		javascript = {
 			--clangformat,
