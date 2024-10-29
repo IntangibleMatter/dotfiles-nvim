@@ -21,7 +21,8 @@ require("mason").setup({
 			"quick_lint_js",
 			"marksman",
 			--'gdscript',
-			"haxe_language_server",
+			"haxe-language-server",
+			"java-language-server",
 			--"jsonls",
 			"clangd",
 			--		'ccls',
@@ -50,6 +51,8 @@ lsp_defaults.capabilities =
 lspconfig.gdscript.setup({})
 
 lspconfig.pylsp.setup({})
+
+lspconfig.java_language_server.setup({})
 
 -- lspconfig.haxe_language_server.setup({})
 

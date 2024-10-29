@@ -139,6 +139,10 @@ require("formatter").setup({
 			--require("formatter.filetypes.c").clangformat,
 		},
 
+		java = {
+			clangformat,
+		},
+
 		css = {
 			--prettier,
 			require("formatter.filetypes.css").prettier,
