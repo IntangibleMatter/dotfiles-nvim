@@ -32,6 +32,8 @@ require("nvim-tree").setup({
 	---
 })
 
+--require("dap").setup({})
+
 require("gitsigns").setup({
 	signs = {
 		add = { text = "│" },

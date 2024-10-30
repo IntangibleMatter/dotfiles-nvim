@@ -118,6 +118,25 @@ map("n", "<RightMouse>", function()
 	local options = vim.bo.ft == "NvimTree" and "nvimtree" or "default"
 	require("menu").open(options, { mouse = true })
 end, {})
+
+local dap = nil -- require("dap")
+
+map("n", "<leader>db", function()
+	dap.toggle_breakpoint()
+end, optd("toggle breakpoint"))
+map("n", "<leader>dc", function()
+	dap.continue()
+end, optd("continue"))
+map("n", "<leader>dso", function()
+	dap.step_over()
+end, optd("step over"))
+map("n", "<leader>dsi", function()
+	dap.step_into()
+end, optd("step into"))
+map("n", "<leader>dr", function()
+	dap.repl.toggle()
+end, optd("toggle repl"))
+
 --[[
 -----------------
 -- Normal mode --
