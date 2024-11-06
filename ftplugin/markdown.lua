@@ -1,0 +1,5 @@
+vim.cmd("set number ")
+vim.cmd("set textwidth=80")
+vim.cmd("set wrapmargin=0")
+vim.cmd("set formatoptions+=t")
+vim.cmd("set linebreak ")
