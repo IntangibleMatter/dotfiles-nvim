@@ -119,7 +119,7 @@ map("n", "<RightMouse>", function()
 	require("menu").open(options, { mouse = true })
 end, {})
 
-local dap = nil -- require("dap")
+local dap = require("dap")
 
 map("n", "<leader>db", function()
 	dap.toggle_breakpoint()
