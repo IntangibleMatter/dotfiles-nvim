@@ -16,9 +16,19 @@ vim.g.mapleader = " "
 
 local map = vim.keymap.set
 
+map("n", "<C-S>", ":w<CR>", opt)
+map("n", "<C-Z>", ":undo<CR>", opt)
+map("n", "<C-Y>", ":redo<CR>", opt)
+map("v", "<C-S>", ":w<CR>", opt)
+map("v", "<C-Z>", ":undo<CR>", opt)
+map("v", "<C-Y>", ":redo<CR>", opt)
+map("i", "<C-S>", "<C-o>:w<CR>", opt)
+map("i", "<C-Z>", "<A-u>", opt)
+map("i", "<C-Y>", "<C-o><C-r>", opt)
+
 map("n", "<leader>l", ":setlocal spell spelllang=en_ca<cr>", opt)
 map("n", "<leader>f", ":NvimTreeToggle<CR>", opt)
-map("n", "<leader>sf", "NvimTreeFindFile", opt)
+map("n", "<leader>sf", ":NvimTreeFindFile", opt)
 map("n", "<leader>t", ":FloatermNew<CR>", opt)
 
 --[[ local builtin = require('telescope.builtin')
