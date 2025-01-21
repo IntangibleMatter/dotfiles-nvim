@@ -22,7 +22,9 @@ require("mason").setup({
 			"marksman",
 			--'gdscript',
 			"haxe-language-server",
-			"java-language-server",
+			--"java-language-server",
+			"kotlin-language-server",
+			"jdtls",
 			--"jsonls",
 			"clangd",
 			--		'ccls',
@@ -52,7 +54,11 @@ lspconfig.gdscript.setup({})
 
 lspconfig.pylsp.setup({})
 
-lspconfig.java_language_server.setup({})
+--lspconfig.java_language_server.setup({})
+
+lspconfig.kotlin_language_server.setup({})
+
+lspconfig.jdtls.setup({})
 
 -- lspconfig.haxe_language_server.setup({})
 
@@ -91,7 +97,12 @@ lspconfig.jsonls.setup({
 -- conflict with other rust plugin
 --lspconfig.rust_analyzer.setup({})
 
-lspconfig.clangd.setup({})
+lspconfig.clangd.setup({
+	--[[init_options = {
+		fallback_flags = { "--std=c++11", "-I/usr/include/c++/" },
+	},]]
+	--
+})
 
 --lspconfig.lua_ls.setup({})
 lspconfig.lua_ls.setup({

@@ -85,6 +85,9 @@ return require("packer").startup(function(use)
 	use({ "neovim/nvim-lspconfig" })
 	use({ "catppuccin/nvim", as = "catppuccin" })
 	use({ "L3MON4D3/LuaSnip" })
+
+	use("folke/todo-comments.nvim")
+	use("numToStr/Comment.nvim")
 	--[[ use({
 	"L3MON4D3/LuaSnip",
 	-- follow latest release.

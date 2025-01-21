@@ -168,7 +168,7 @@ require("focus").setup({
 
 require("nvim-treesitter.configs").setup({
 	-- A list of parser names, or "all" (the five listed parsers should always be installed)
-	ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "markdown", "po", "rust", "commonlisp" },
+	ensure_installed = { "c", "lua", "vim", "vimdoc", "kotlin", "query", "markdown", "po", "rust", "commonlisp" },
 
 	-- Install parsers synchronously (only applied to `ensure_installed`)
 	sync_install = false,
@@ -248,7 +248,16 @@ local configs = require("nvim-treesitter.configs")
 	},
 })]]
 --
+
 parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+
+vim.filetype.add({
+	extension = {
+		hx = "haxe",
+		hxc = "haxe",
+	},
+})
+
 parser_config.haxe = {
 	install_info = {
 		url = "https://github.com/vantreeseba/tree-sitter-haxe",
@@ -258,14 +267,47 @@ parser_config.haxe = {
 	},
 	filetype = "haxe",
 }
+
 vim.filetype.add({
 	extension = {
-		hx = "haxe",
-		hxc = "haxe",
+		wren = "wren",
 	},
 })
--- minecraft filetypes
 
+parser_config.wren = {
+	install_info = {
+		url = "https://github.com/otherJL0/tree-sitter-wren",
+		files = { "src/parser.c" },
+		branch = "main",
+	},
+	filetype = "wren",
+}
+
+vim.filetype.add({
+	extension = {
+		ftl = "fluent",
+	},
+})
+
+parser_config.fluent = {
+	install_info = {
+		url = "https://github.com/projectfluent/tree-sitter-fluent",
+		files = { "src/parser.c" },
+	},
+	filetype = "fluent",
+}
+
+-- minecraft filetypes
+vim.filetype.add({
+	extension = {
+		mcfunction = "mcfunction",
+	},
+})
+vim.filetype.add({
+	extension = {
+		mcmeta = "json",
+	},
+})
 parser_config.mcfunction = {
 	install_info = {
 		url = "https://github.com/theusaf/tree-sitter-mcfunction-lang",
@@ -275,17 +317,6 @@ parser_config.mcfunction = {
 	filetype = "mcfunction",
 }
 
-vim.filetype.add({
-	extension = {
-		mcfunction = "mcfunction",
-	},
-})
-
-vim.filetype.add({
-	extension = {
-		mcmeta = "json",
-	},
-})
 -- lua
 require("nvim-tree").setup({
 	sync_root_with_cwd = true,
@@ -331,6 +362,24 @@ vim.g.rainbow_delimiters = { highlight = highlight }
 require("ibl").setup({ scope = { highlight = highlight } })
 
 hooks.register(hooks.type.SCOPE_HIGHLIGHT, hooks.builtin.scope_highlight_from_extmark)
+
+require("Comment").setup({})
+require("todo-comments").setup({
+	keywords = {
+		REGION = {
+			icon = "↧ ",
+			color = "info",
+			alt = { "region" },
+		},
+		ENDREGION = {
+			icon = "↥ ",
+			color = "info",
+			alt = { "endregion" },
+		},
+	},
+	--	pattern = [[\b?(KEYWORDS)\b?]],
+	pattern = [[\b(KEYWORDS)\b]],
+})
 
 --[[
 require("obsidian").setup({

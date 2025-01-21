@@ -4,9 +4,12 @@ local api = vim.api
 opt.foldmethod = "expr"
 opt.foldexpr = "nvim_treesitter#foldexpr()"
 
+vim.lsp.set_log_level("error")
+
 vim.o.foldlevelstart = 99
 
 opt.conceallevel = 0
+
 --[[
 vim.api.nvim_create_augroup("AutoFormat", {})
 
