@@ -136,7 +136,7 @@ return require("packer").startup(function(use)
 	use("nvim-treesitter/nvim-treesitter-context")
 	use("nvim-tree/nvim-web-devicons")
 	use("projekt0n/github-nvim-theme")
-
+	use("wakatime/vim-wakatime")
 	use("lukas-reineke/indent-blankline.nvim")
 	use("https://gitlab.com/HiPhish/rainbow-delimiters.nvim")
 
