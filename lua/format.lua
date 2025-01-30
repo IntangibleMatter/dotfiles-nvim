@@ -98,9 +98,10 @@ require("formatter").setup({
 			end,
 		},
 
-		arduino = {
+		--[[arduino = {
 			clangformat,
-		},
+		},]]
+		--
 
 		--pde = { clangformat },
 
