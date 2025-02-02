@@ -498,8 +498,8 @@ require("remote-nvim").setup()
 
 require("easytables").setup()
 
-require("markview").setup({
-	__inside_code_block = false,
+require("markview").setup({})
+--[[	__inside_code_block = false,
 
 	buf_ignore = {
 		"nofile",
@@ -527,7 +527,7 @@ require("markview").setup({
 				query = [[
 	                    (section
 	                        (atx_heading)) @fold (#set! @fold)
-	                ]],
+	                ]\],
 			},
 		},
 	},
@@ -820,7 +820,7 @@ require("markview").setup({
 
 		indent_size = 4,
 	},
-})
+})]]
 
 -- seems nice but I don't have the time rn
 --require("multicursor-nvim").setup()
