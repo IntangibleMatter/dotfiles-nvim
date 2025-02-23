@@ -261,7 +261,7 @@ vim.filetype.add({
 parser_config.haxe = {
 	install_info = {
 		url = "https://github.com/vantreeseba/tree-sitter-haxe",
-		files = { "src/parser.c" },
+		files = { "src/parser.c", "src/scanner.c" },
 		-- optional entries:
 		branch = "main",
 	},
@@ -270,8 +270,8 @@ parser_config.haxe = {
 
 parser_config.wren = {
 	install_info = {
-		--url = "https://github.com/otherJL0/tree-sitter-wren",
-		url = "~/Dev/grammars/tree-sitter-wren",
+		url = "https://github.com/otherJL0/tree-sitter-wren",
+		--url = "~/Dev/grammars/tree-sitter-wren",
 		files = { "src/parser.c", "src/scanner.c" },
 		branch = "main",
 	},
