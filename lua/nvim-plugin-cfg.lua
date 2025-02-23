@@ -268,20 +268,21 @@ parser_config.haxe = {
 	filetype = "haxe",
 }
 
+parser_config.wren = {
+	install_info = {
+		--url = "https://github.com/otherJL0/tree-sitter-wren",
+		url = "~/Dev/grammars/tree-sitter-wren",
+		files = { "src/parser.c", "src/scanner.c" },
+		branch = "main",
+	},
+	filetype = "wren",
+}
+
 vim.filetype.add({
 	extension = {
 		wren = "wren",
 	},
 })
-
-parser_config.wren = {
-	install_info = {
-		url = "https://github.com/otherJL0/tree-sitter-wren",
-		files = { "src/parser.c" },
-		branch = "main",
-	},
-	filetype = "wren",
-}
 
 vim.filetype.add({
 	extension = {
