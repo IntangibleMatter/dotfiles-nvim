@@ -1,21 +1,15 @@
 require("nvim-treesitter.configs").setup({
 	-- A list of parser names, or "all" (the five listed parsers should always be installed)
 	ensure_installed = { "c", "lua", "vim", "vimdoc", "kotlin", "query", "markdown", "po", "rust", "commonlisp" },
-
-	-- Install parsers synchronously (only applied to `ensure_installed`)
 	sync_install = false,
 
 	-- Automatically install missing parsers when entering buffer
 	-- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
 	auto_install = true,
 
-	-- List of parsers to ignore installing (for "all")
 	ignore_install = {
 		"tsv",
 	},
-
-	---- If you need to change the installation directory of the parsers (see -> Advanced Setup)
-	-- parser_install_dir = "/some/path/to/store/parsers", -- Remember to run vim.opt.runtimepath:append("/some/path/to/store/parsers")!
 
 	highlight = {
 		enable = true,
@@ -43,6 +37,8 @@ require("nvim-treesitter.configs").setup({
 })
 
 local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+local configs = require("nvim-treesitter.configs")
+
 parser_config.asm6502 = {
 	install_info = {
 		url = "~/Dev/grammars/tree-sitter-merlin6502/", -- local path or git repo
@@ -72,9 +68,7 @@ extension = {
 })]]
 --
 
-local configs = require("nvim-treesitter.configs")
-
-parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+--parser_config = require("nvim-treesitter.parsers").get_parser_configs()
 
 vim.filetype.add({
 	extension = {

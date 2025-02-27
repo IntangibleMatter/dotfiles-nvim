@@ -272,7 +272,7 @@ return {
 	-- filetype/language specific
 	-- CSV
 	-- highlighting
-	{ "mechatroner/rainbow_csv" },
+	{ "mechatroner/rainbow_csv", ft = { "csv" } },
 
 	-- Markdown
 
@@ -317,4 +317,18 @@ return {
 	-- utils
 	-- a lot of stuff seems to use this
 	{ "nvim-lua/plenary.nvim" },
+
+	-- fun
+	-- typing practice
+	{
+		"nvzone/typr",
+		dependencies = "nvzone/volt",
+		opts = {},
+		cmd = { "Typr", "TyprStats" },
+	},
+	-- colour palette helper
+	{
+		"nvzone/minty",
+		cmd = { "Shades", "Huefy" },
+	},
 }
