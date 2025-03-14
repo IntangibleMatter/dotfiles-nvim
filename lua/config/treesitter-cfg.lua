@@ -136,3 +136,11 @@ parser_config.mcfunction = {
 	},
 	filetype = "mcfunction",
 }
+
+-- my own misc bullshit filetypes
+
+vim.filetype.add({
+	extension = {
+		ebtr = "cfg",
+	},
+})
