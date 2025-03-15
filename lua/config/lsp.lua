@@ -36,9 +36,10 @@ require("mason").setup({
 	},
 })
 
-require("mason-lspconfig").setup({
+--[[require("mason-lspconfig").setup({
+	"haxe_language_server",
 	-- A list of servers to automatically install if they're not already installed
-})
+})]]
 -- Set different settings for different languages' LSP
 -- LSP list: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 -- How to use setup({}): https://github.com/neovim/nvim-lspconfig/wiki/Understanding-setup-%7B%7D
@@ -60,7 +61,7 @@ lspconfig.kotlin_language_server.setup({})
 
 lspconfig.jdtls.setup({})
 
--- lspconfig.haxe_language_server.setup({})
+lspconfig.haxe_language_server.setup({})
 
 lspconfig.gopls.setup({})
 
@@ -322,3 +323,25 @@ vim.filetype.add({
 		p8 = "lua",
 	},
 })
+
+vim.filetype.add({
+	extension = {
+		pde = "processing",
+	},
+})
+
+local configs = require("lspconfig.configs")
+if not configs.l4sp then
+	configs.l4sp = {
+		default_config = {
+			cmd = { "~/Dev/miscshit/lsps/LS4P/initserver.sh" },
+			filetypes = { "pde", "processing" },
+			root_dir = function(fname)
+				return lspconfig.util.root_pattern("*.pde")
+			end,
+			settings = {},
+		},
+	}
+end
+
+--lspconfig.l4sp.setup({})
