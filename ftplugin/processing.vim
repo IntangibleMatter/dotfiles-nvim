@@ -10,5 +10,5 @@ augroup END
 function! SetPdeSyntax()
    " remove the augroup
    au! pdeSyntax
-   set syntax=arduino
+   set syntax=java
 endfunction
