@@ -98,8 +98,11 @@ return {
 			require("ibl").setup({ scope = { highlight = highlight } })
 		end,
 	},
+
 	-- rainbow brackets
 	{ url = "https://gitlab.com/HiPhish/rainbow-delimiters.nvim" },
+	-- wrap with brackets in visual mode
+	{ "bwintertkb/visual_wrap.nvim", opts = {} },
 
 	-- nicer comments
 	{
