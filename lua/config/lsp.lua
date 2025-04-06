@@ -320,6 +320,12 @@ vim.filetype.add({
 
 vim.filetype.add({
 	extension = {
+		ldtk = "ldtk",
+	},
+})
+
+vim.filetype.add({
+	extension = {
 		p8 = "lua",
 	},
 })
