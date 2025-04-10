@@ -1,1 +1,1 @@
-vim.cmd("setlocal expandtab=true")
+vim.bo.expandtab = true

@@ -16,6 +16,8 @@ vim.filetype.add({
 	},
 })
 
+vim.treesitter.language.register("json", "ldtk")
+
 vim.filetype.add({
 	extension = {
 		p8 = "lua",

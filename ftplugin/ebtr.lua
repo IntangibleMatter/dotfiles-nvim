@@ -1,1 +1,1 @@
-vim.cmd("set syntax=cfg")
+vim.bo.syntax = "cfg"
