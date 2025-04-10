@@ -10,5 +10,9 @@ augroup END
 function! SetPdeSyntax()
    " remove the augroup
    au! pdeSyntax
-   set syntax=java
+   setlocal syntax=java
+   setlocal shiftwidth=4
+   setlocal softtabstop=4
+   setlocal tabstop=4
+   setlocal expandtab
 endfunction

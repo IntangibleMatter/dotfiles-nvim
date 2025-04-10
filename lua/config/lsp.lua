@@ -309,33 +309,6 @@ vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { 
 
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
 
-vim.filetype.add({
-	extension = {
-		lspgd = "commonlisp",
-		lispdot = "commonlisp",
-		gdlisp = "commonlisp",
-		lispgd = "commonlisp",
-	},
-})
-
-vim.filetype.add({
-	extension = {
-		ldtk = "ldtk",
-	},
-})
-
-vim.filetype.add({
-	extension = {
-		p8 = "lua",
-	},
-})
-
-vim.filetype.add({
-	extension = {
-		pde = "processing",
-	},
-})
-
 local configs = require("lspconfig.configs")
 if not configs.l4sp then
 	configs.l4sp = {
