@@ -36,6 +36,12 @@ require("mason").setup({
 	},
 })
 
+require("mason-lspconfig").setup({
+	ensure_installed = {
+		"cmake",
+	},
+})
+
 --[[require("mason-lspconfig").setup({
 	"haxe_language_server",
 	-- A list of servers to automatically install if they're not already installed
@@ -70,6 +76,8 @@ lspconfig.csharp_ls.setup({})
 lspconfig.marksman.setup({})
 
 lspconfig.glsl_analyzer.setup({})
+
+lspconfig.cmake.setup({})
 -- lspconfig.ccls.setup{}
 
 lspconfig.jsonls.setup({
