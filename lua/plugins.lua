@@ -378,6 +378,8 @@ return {
 	{ "nvim-lua/plenary.nvim" },
 
 	-- fun
+	-- Track time in nvim
+	{ "wakatime/vim-wakatime", lazy = false },
 	-- typing practice
 	{
 		"nvzone/typr",
