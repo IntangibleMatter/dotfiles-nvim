@@ -12,6 +12,8 @@ require("nvim-treesitter.configs").setup({
 		"rust",
 		"commonlisp",
 		"arduino",
+		"fortran",
+		"fennel",
 	},
 	sync_install = false,
 

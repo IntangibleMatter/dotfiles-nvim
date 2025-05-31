@@ -7,6 +7,7 @@ vim.filetype.add({
 		lispdot = "commonlisp",
 		gdlisp = "commonlisp",
 		lispgd = "commonlisp",
+		ark = "commonlisp",
 	},
 })
 

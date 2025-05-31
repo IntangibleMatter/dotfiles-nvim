@@ -27,6 +27,7 @@ require("mason").setup({
 			"jdtls",
 			--"jsonls",
 			"clangd",
+			"fortls",
 			--		'ccls',
 		},
 		formatter = {
@@ -78,6 +79,9 @@ lspconfig.marksman.setup({})
 lspconfig.glsl_analyzer.setup({})
 
 lspconfig.cmake.setup({})
+
+--lspconfig.fortls.setup({})
+lspconfig.fortls.setup({})
 -- lspconfig.ccls.setup{}
 
 lspconfig.jsonls.setup({
@@ -146,7 +150,7 @@ lspconfig.lua_ls.setup({
 	end,
 })
 
-lspconfig.cssls.setup({})
+--lspconfig.cssls.setup({})
 
 lspconfig.gdshader_lsp.setup({})
 
@@ -227,9 +231,9 @@ cmp.setup({
 	window = {
 		documentation = cmp.config.window.bordered(),
 	},
-	formatting = {
+	--[[formatting = {
 		fields = { "menu", "abbr", "kind" },
-	},
+	},]]
 	formatting = {
 		fields = { "menu", "abbr", "kind" },
 		format = function(entry, item)
@@ -255,7 +259,6 @@ cmp.setup({
 		["<C-d>"] = cmp.mapping.scroll_docs(4),
 		["<C-e>"] = cmp.mapping.abort(),
 		["<C-y>"] = cmp.mapping.confirm({ select = true }),
-		["<CR>"] = cmp.mapping.confirm({ select = false }),
 		["<C-f>"] = cmp.mapping(function(fallback)
 			if luasnip.jumpable(1) then
 				luasnip.jump(1)
@@ -318,7 +321,7 @@ vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { 
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
 
 local configs = require("lspconfig.configs")
-if not configs.l4sp then
+--[[if not configs.l4sp then
 	configs.l4sp = {
 		default_config = {
 			cmd = { "~/Dev/miscshit/lsps/LS4P/initserver.sh" },
@@ -329,6 +332,31 @@ if not configs.l4sp then
 			settings = {},
 		},
 	}
-end
+end]]
+
+configs.fennel_language_server = {
+	default_config = {
+		-- replace it with true path
+		cmd = { "fennel-language-server" },
+		filetypes = { "fennel" },
+		single_file_support = true,
+		-- source code resides in directory `fnl/`
+		root_dir = lspconfig.util.root_pattern("fnl"),
+		settings = {
+			fennel = {
+				workspace = {
+					-- If you are using hotpot.nvim or aniseed,
+					-- make the server aware of neovim runtime files.
+					library = vim.api.nvim_list_runtime_paths(),
+				},
+				diagnostics = {
+					globals = { "vim" },
+				},
+			},
+		},
+	},
+}
+
+lspconfig.fennel_language_server.setup({})
 
 --lspconfig.l4sp.setup({})
