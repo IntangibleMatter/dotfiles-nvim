@@ -80,6 +80,15 @@ lspconfig.glsl_analyzer.setup({})
 
 lspconfig.cmake.setup({})
 
+lspconfig.html.setup({})
+
+-- is the ".setup({}) not needed anymore???"
+--lspconfig.somesass_ls.setup({})
+vim.lsp.enable("somesass_ls")
+
+vim.lsp.enable("css_variables")
+vim.lsp.enable("css_variables")
+
 --lspconfig.fortls.setup({})
 lspconfig.fortls.setup({})
 -- lspconfig.ccls.setup{}
@@ -360,3 +369,18 @@ configs.fennel_language_server = {
 lspconfig.fennel_language_server.setup({})
 
 --lspconfig.l4sp.setup({})
+
+-- html language server add snippets
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+vim.lsp.config("html", {
+	capabilities = capabilities,
+})
+vim.lsp.config("cssls", {
+	capabilities = capabilities,
+})
+
+vim.lsp.enable("html")
+vim.lsp.enable("cssls")
