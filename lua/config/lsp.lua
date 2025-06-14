@@ -86,7 +86,7 @@ lspconfig.html.setup({})
 --lspconfig.somesass_ls.setup({})
 vim.lsp.enable("somesass_ls")
 
-vim.lsp.enable("css_variables")
+vim.lsp.enable("html")
 vim.lsp.enable("css_variables")
 
 --lspconfig.fortls.setup({})
