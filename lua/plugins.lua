@@ -404,6 +404,14 @@ return {
 
 	-- HTML and the like
 	{
+		{
+			"barrett-ruth/live-server.nvim",
+			build = "pnpm add -g live-server",
+			cmd = { "LiveServerStart", "LiveServerStop" },
+			config = true,
+		},
+	},
+	--[[{
 		"brianhuster/live-preview.nvim",
 		dependencies = {
 			-- You can choose one of the following pickers
@@ -411,7 +419,7 @@ return {
 			"ibhagwan/fzf-lua",
 			"echasnovski/mini.pick",
 		},
-	},
+	},]]
 
 	-- JSON
 	-- json schema support
