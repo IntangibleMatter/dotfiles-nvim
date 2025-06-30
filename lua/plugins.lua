@@ -159,11 +159,25 @@ return {
 		},
 	},
 
+	-- this plugin for markdown needs to be laoded before treesitter otherwise
+	-- it won't work right??
+	--[[{
+		"OXY2DEV/markview.nvim",
+		lazy = false,
+	},]]
+
 	-- syntax highlighting
 	{
 		"nvim-treesitter/nvim-treesitter",
 		lazy = false,
 		build = ":TSUpdate",
+		--[[dependencies = {
+			-- make sure markview is loaded first to avoid bugs
+			{
+				"OXY2DEV/markview.nvim",
+				lazy = false,
+			},
+		},]]
 	},
 	-- show the context of the current scope
 	{ "nvim-treesitter/nvim-treesitter-context", setup = true },
@@ -388,10 +402,7 @@ return {
 	-- latex support
 	{ "lervag/vimtex" },
 	-- preview in editor
-	{
-		"OXY2DEV/markview.nvim",
-		lazy = false,
-	},
+	-- (markdown moved elsewhere)
 	-- preview the markdown on a site
 	{
 		"iamcco/markdown-preview.nvim",
