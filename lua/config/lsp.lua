@@ -60,7 +60,7 @@ local lspconfig = require("lspconfig")
 			inlay_hints = { enabled = true },
 		},
 	},
-})==
+})]]
 local lsp_defaults = lspconfig.util.default_config
 
 lsp_defaults.capabilities =
