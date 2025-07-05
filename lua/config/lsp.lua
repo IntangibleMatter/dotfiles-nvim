@@ -53,6 +53,14 @@ require("mason-lspconfig").setup({
 --     - the settings table is sent to the LSP
 --     - on_attach: a lua callback function to run after LSP attaches to a given buffer
 local lspconfig = require("lspconfig")
+-- TODO: make it so that inlay hints are automatically set up where possible
+--[[vim.lsp.config("*", {
+	capabilities = {
+		textDocument = {
+			inlay_hints = { enabled = true },
+		},
+	},
+})==
 local lsp_defaults = lspconfig.util.default_config
 
 lsp_defaults.capabilities =
@@ -163,7 +171,35 @@ lspconfig.lua_ls.setup({
 
 lspconfig.gdshader_lsp.setup({})
 
-lspconfig.ts_ls.setup({}) --{ cmd = { "typescript-language-server", "--JSX", "--stdio" } })
+lspconfig.ts_ls.setup({
+	--[[init_options = {
+
+		preferences = {
+
+			includeInlayParameterNameHints = "all",
+
+			includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+
+			includeInlayFunctionParameterTypeHints = true,
+
+			includeInlayVariableTypeHints = true,
+
+			includeInlayPropertyDeclarationTypeHints = true,
+
+			includeInlayFunctionLikeReturnTypeHints = true,
+
+			includeInlayEnumMemberValueHints = true,
+
+			importModuleSpecifierPreference = "non-relative",
+		},
+	},
+
+	on_attach = function(client, bufnr)
+		client.server_capabilities.document_formatting = false
+
+		client.server_capabilities.document_range_formatting = false
+	end,]]
+}) --{ cmd = { "typescript-language-server", "--JSX", "--stdio" } })
 
 lspconfig.spyglassmc_language_server.setup({})
 vim.api.nvim_create_autocmd("LspAttach", {

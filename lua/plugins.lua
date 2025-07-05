@@ -171,13 +171,14 @@ return {
 		"nvim-treesitter/nvim-treesitter",
 		lazy = false,
 		build = ":TSUpdate",
-		--[[dependencies = {
+		dependencies = {
 			-- make sure markview is loaded first to avoid bugs
 			{
 				"OXY2DEV/markview.nvim",
 				lazy = false,
+				priority = 49,
 			},
-		},]]
+		},
 	},
 	-- show the context of the current scope
 	{ "nvim-treesitter/nvim-treesitter-context", setup = true },

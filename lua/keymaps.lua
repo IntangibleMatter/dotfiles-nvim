@@ -147,6 +147,9 @@ map("n", "<leader>dr", function()
 	dap.repl.toggle()
 end, optd("toggle repl"))
 
+map("n", "<leader>gi", function()
+	vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+end, opt)
 --[[
 -----------------
 -- Normal mode --
