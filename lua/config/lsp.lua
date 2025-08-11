@@ -28,6 +28,7 @@ require("mason").setup({
 			--"jsonls",
 			"clangd",
 			"fortls",
+			"tinymist",
 			--		'ccls',
 		},
 		formatter = {
@@ -89,6 +90,8 @@ lspconfig.glsl_analyzer.setup({})
 lspconfig.cmake.setup({})
 
 lspconfig.html.setup({})
+
+lspconfig.tinymist.setup({})
 
 -- is the ".setup({}) not needed anymore???"
 --lspconfig.somesass_ls.setup({})

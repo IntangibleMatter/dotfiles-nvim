@@ -398,6 +398,15 @@ return {
 
 	-- Markdown
 
+	-- typst
+	{
+		"chomosuke/typst-preview.nvim",
+		-- lazy = false, -- or ft = 'typst'
+		ft = "typst",
+		version = "1.*",
+		opts = {}, -- lazy.nvim will implicitly calls `setup {}`
+	},
+
 	-- quick table creation
 	{ "Myzel394/easytables.nvim", ft = "markdown" },
 	-- latex support

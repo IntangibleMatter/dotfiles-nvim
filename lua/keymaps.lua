@@ -107,9 +107,13 @@ end
 map("n", "<leader>ee", ":EasyTablesImportThisTable<CR>", optd("Import table to edit"))
 map("n", "<leader>ew", ":ExportTable<CR>", optd("Export Table"))
 
-map("n", "<leader>mdp", ":MarkdownPreviewToggle<CR>", opt)
-map("n", "<leader>mdv", ":Markview<CR>", opt)
-map("n", "<leader>mds", ":Markview splitToggle<CR>", opt)
+map("n", "<leader>pmm", ":MarkdownPreviewToggle<CR>", opt)
+map("n", "<leader>pmv", ":Markview<CR>", opt)
+map("n", "<leader>pms", ":Markview splitToggle<CR>", opt)
+map("n", "<leader>ptt", ":TypstPreviewToggle<CR>", opt)
+map("n", "<leader>ptp", ":TypstPreview<CR>", opt)
+map("n", "<leader>pts", ":TypstPreviewStop<CR>", opt)
+map("n", "<leader>ptf", ":TypstPreviewFollowCursorToggle<CR>", opt)
 
 --map("n", "<leader>mds", ":MarkdownPreviewStop", opt)
 --map("n", "<leader>pp", ":LatexPreviewToggle<CR>", opt)

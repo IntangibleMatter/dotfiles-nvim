@@ -123,3 +123,9 @@ parser_config.asm6502 = {
 	},
 	filetype = "s", -- if filetype does not match the parser name
 }
+
+vim.filetype.add({
+	extension = {
+		fs = "glsl",
+	},
+})

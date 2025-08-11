@@ -91,6 +91,20 @@ require("formatter").setup({
 			end,
 		},
 
+		typst = {
+			function()
+				return {
+					exe = "typstyle",
+					args = {
+						"-t 4",
+						--[["-i",
+						util.escape_path(util.get_current_buffer_file_path()),]]
+					},
+					stdin = true,
+				}
+			end,
+		},
+
 		-- run "pipx install gdtoolkit", make sure the install location is on the path, then run this.
 		gdscript = {
 			function()

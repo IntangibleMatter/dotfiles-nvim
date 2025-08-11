@@ -14,6 +14,7 @@ require("nvim-treesitter.configs").setup({
 		"arduino",
 		"fortran",
 		"fennel",
+		"typst",
 	},
 	sync_install = false,
 
