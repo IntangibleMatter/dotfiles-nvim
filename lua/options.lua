@@ -4,7 +4,7 @@ local api = vim.api
 opt.foldmethod = "expr"
 opt.foldexpr = "nvim_treesitter#foldexpr()"
 
-vim.lsp.set_log_level("error")
+vim.lsp.set_log_level("warn")
 
 vim.o.foldlevelstart = 99
 

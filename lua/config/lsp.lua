@@ -1,6 +1,10 @@
 vim.lsp.set_log_level("debug")
 
 require("mason").setup({
+	registries = {
+		"github:nvim-java/mason-registry",
+		"github:mason-org/mason-registry",
+	},
 	ui = {
 		icons = {
 			package_installed = "✓",
@@ -17,7 +21,7 @@ require("mason").setup({
 			-- Wht is this giving a warning? Installs fine
 			--		"gdtoolkit",
 			--"rust_analyzer",
-			"csharp_ls",
+			--"csharp_ls",
 			"quick_lint_js",
 			"marksman",
 			--'gdscript',
@@ -75,13 +79,11 @@ lspconfig.pylsp.setup({})
 
 lspconfig.kotlin_language_server.setup({})
 
-lspconfig.jdtls.setup({})
-
 lspconfig.haxe_language_server.setup({})
 
 lspconfig.gopls.setup({})
 
-lspconfig.csharp_ls.setup({})
+--lspconfig.csharp_ls.setup({})
 
 lspconfig.marksman.setup({})
 
@@ -93,11 +95,12 @@ lspconfig.html.setup({})
 
 lspconfig.tinymist.setup({})
 
+-- web shit
 -- is the ".setup({}) not needed anymore???"
 --lspconfig.somesass_ls.setup({})
 vim.lsp.enable("somesass_ls")
 
-vim.lsp.enable("html")
+--vim.lsp.enable("html") -- already added like 8 lines up lmao
 vim.lsp.enable("css_variables")
 
 --lspconfig.fortls.setup({})
@@ -126,6 +129,64 @@ lspconfig.jsonls.setup({
 		},
 	},
 })
+
+-- this until [END] is a hot fucking mess so check it out more later to see if you can clean it up
+local configs = require("lspconfig.configs")
+--[[if not configs.l4sp then
+	configs.l4sp = {
+		default_config = {
+			cmd = { "~/Dev/miscshit/lsps/LS4P/initserver.sh" },
+			filetypes = { "pde", "processing" },
+			root_dir = function(fname)
+				return lspconfig.util.root_pattern("*.pde")
+			end,
+			settings = {},
+		},
+	}
+end]]
+
+configs.fennel_language_server = {
+	default_config = {
+		-- replace it with true path
+		cmd = { "fennel-language-server" },
+		filetypes = { "fennel" },
+		single_file_support = true,
+		-- source code resides in directory `fnl/`
+		root_dir = lspconfig.util.root_pattern("fnl"),
+		settings = {
+			fennel = {
+				workspace = {
+					-- If you are using hotpot.nvim or aniseed,
+					-- make the server aware of neovim runtime files.
+					library = vim.api.nvim_list_runtime_paths(),
+				},
+				diagnostics = {
+					globals = { "vim" },
+				},
+			},
+		},
+	},
+}
+
+lspconfig.fennel_language_server.setup({})
+
+--lspconfig.l4sp.setup({})
+
+-- html language server add snippets
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+vim.lsp.config("html", {
+	capabilities = capabilities,
+})
+vim.lsp.config("cssls", {
+	capabilities = capabilities,
+})
+
+vim.lsp.enable("html")
+vim.lsp.enable("cssls")
+-- [END] of the hot mess
 
 -- conflict with other rust plugin
 --lspconfig.rust_analyzer.setup({})
@@ -205,6 +266,11 @@ lspconfig.ts_ls.setup({
 }) --{ cmd = { "typescript-language-server", "--JSX", "--stdio" } })
 
 lspconfig.spyglassmc_language_server.setup({})
+
+-- Java stuff
+--require("java").setup()
+lspconfig.jdtls.setup({})
+
 vim.api.nvim_create_autocmd("LspAttach", {
 	desc = "LSP actions",
 	callback = function()
@@ -367,59 +433,3 @@ vim.diagnostic.config({
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
 
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
-
-local configs = require("lspconfig.configs")
---[[if not configs.l4sp then
-	configs.l4sp = {
-		default_config = {
-			cmd = { "~/Dev/miscshit/lsps/LS4P/initserver.sh" },
-			filetypes = { "pde", "processing" },
-			root_dir = function(fname)
-				return lspconfig.util.root_pattern("*.pde")
-			end,
-			settings = {},
-		},
-	}
-end]]
-
-configs.fennel_language_server = {
-	default_config = {
-		-- replace it with true path
-		cmd = { "fennel-language-server" },
-		filetypes = { "fennel" },
-		single_file_support = true,
-		-- source code resides in directory `fnl/`
-		root_dir = lspconfig.util.root_pattern("fnl"),
-		settings = {
-			fennel = {
-				workspace = {
-					-- If you are using hotpot.nvim or aniseed,
-					-- make the server aware of neovim runtime files.
-					library = vim.api.nvim_list_runtime_paths(),
-				},
-				diagnostics = {
-					globals = { "vim" },
-				},
-			},
-		},
-	},
-}
-
-lspconfig.fennel_language_server.setup({})
-
---lspconfig.l4sp.setup({})
-
--- html language server add snippets
-
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-
-vim.lsp.config("html", {
-	capabilities = capabilities,
-})
-vim.lsp.config("cssls", {
-	capabilities = capabilities,
-})
-
-vim.lsp.enable("html")
-vim.lsp.enable("cssls")

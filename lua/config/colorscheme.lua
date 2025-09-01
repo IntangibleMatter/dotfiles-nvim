@@ -2,6 +2,10 @@
 OPTIONS
 
 tokyonight-night
+	- night
+	- storm
+	- moon
+	- day
 
 dracula
 
@@ -19,7 +23,7 @@ kanagawa
 moonfly
 ]]
 --
-local colorscheme = "tokyonight-night"
+local colorscheme = "tokyonight-storm"
 
 local dracula = require("dracula")
 dracula.setup({

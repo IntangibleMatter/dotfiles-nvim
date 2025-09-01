@@ -39,6 +39,13 @@ return {
 		},
 	},
 
+	{
+		"nvim-java/nvim-java",
+		opts = false,
+		dependencies = {
+			{ "williamboman/mason.nvim" },
+		},
+	},
 	-- lsp
 	{ "neovim/nvim-lspconfig", lazy = false },
 	-- Debug Adapter Protocol support
@@ -376,6 +383,11 @@ return {
 				},
 				update_cwd = true,
 				on_attach = my_on_attach,
+				filters = {
+					custom = {
+						".\\{-}\\.uid$",
+					},
+				},
 			})
 		end,
 	},
@@ -458,6 +470,13 @@ return {
 			require("crates").setup()
 		end,
 	},
+
+	-- Java
+
+	--[[{
+		"nvim-java/nvim-java",
+		opts = {},
+	},]]
 
 	-- hex editor
 	{
