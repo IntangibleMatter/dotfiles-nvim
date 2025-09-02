@@ -1,5 +1,8 @@
 --require("java").setup({
---[[spring_boot_tools = {
+--[[	jdtls = {
+		version = "v1.43.0",
+	},
+	--[[spring_boot_tools = {
 		enable = true,
 		version = "1.59.0",
 	},

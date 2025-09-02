@@ -13,28 +13,7 @@ require("mason").setup({
 		},
 	},
 	ensure_installed = {
-
-		lsp = {
-			"pylsp",
-			"gopls",
-			"lua_ls",
-			-- Wht is this giving a warning? Installs fine
-			--		"gdtoolkit",
-			--"rust_analyzer",
-			--"csharp_ls",
-			"quick_lint_js",
-			"marksman",
-			--'gdscript',
-			"haxe-language-server",
-			--"java-language-server",
-			"kotlin-language-server",
-			"jdtls",
-			--"jsonls",
-			"clangd",
-			"fortls",
-			"tinymist",
-			--		'ccls',
-		},
+		lsp = {},
 		formatter = {
 			"gdtoolkit",
 			"mdformat",
@@ -45,6 +24,36 @@ require("mason").setup({
 require("mason-lspconfig").setup({
 	ensure_installed = {
 		"cmake",
+		"pylsp",
+		"gopls",
+		"lua_ls",
+		-- Wht is this giving a warning? Installs fine
+		--		"gdtoolkit",
+		--"rust_analyzer",
+		--"csharp_ls",
+		"quick_lint_js",
+		"marksman",
+		--'gdscript',
+		"haxe_language_server",
+		--"java-language-server",
+		"kotlin_language_server",
+		--"jsonls",
+		"clangd",
+		"fortls",
+		"tinymist",
+		--		'ccls',
+	},
+})
+
+require("java").setup({
+
+	spring_boot_tools = {
+		enable = true,
+		version = "1.59.0",
+	},
+	java_test = {
+		enable = true,
+		version = "0.43.1",
 	},
 })
 
