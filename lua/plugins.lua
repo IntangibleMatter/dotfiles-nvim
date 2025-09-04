@@ -20,6 +20,16 @@ return {
 	{ "tomasr/molokai" },
 	{ "NLKNguyen/papercolor-theme" },
 	{ "nanotech/jellybeans.vim" },
+	{ "tomasr/molokai" },
+	{ "navarasu/onedark.nvim" },
+	{ "catppuccin/nvim" },
+	{ "morhetz/gruvbox" },
+	{ "sainnhe/everforest" },
+	{ "nordtheme/vim" },
+	{ "dracula/vim" },
+	{ "mhartington/oceanic-next" },
+	{ "junegunn/seoul256.vim" },
+	{ "samharju/synthweave.nvim" },
 
 	-- package management
 	-- mason
