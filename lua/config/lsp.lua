@@ -23,9 +23,9 @@ require("mason").setup({
 
 require("mason-lspconfig").setup({
 	ensure_installed = {
-		"cmake",
-		"pylsp",
-		"gopls",
+		-- "cmake",
+		-- "pylsp",
+		-- "gopls",
 		"lua_ls",
 		-- Wht is this giving a warning? Installs fine
 		--		"gdtoolkit",
@@ -34,18 +34,18 @@ require("mason-lspconfig").setup({
 		"quick_lint_js",
 		"marksman",
 		--'gdscript',
-		"haxe_language_server",
+		-- "haxe_language_server",
 		--"java-language-server",
 		"kotlin_language_server",
 		--"jsonls",
 		"clangd",
-		"fortls",
+		-- "fortls",
 		"tinymist",
 		--		'ccls',
 	},
 })
 
-require("java").setup({
+--[[require("java").setup({
 
 	spring_boot_tools = {
 		enable = true,
@@ -55,7 +55,7 @@ require("java").setup({
 		enable = true,
 		version = "0.43.1",
 	},
-})
+})]]
 
 --[[require("mason-lspconfig").setup({
 	"haxe_language_server",
@@ -66,7 +66,8 @@ require("java").setup({
 -- How to use setup({}): https://github.com/neovim/nvim-lspconfig/wiki/Understanding-setup-%7B%7D
 --     - the settings table is sent to the LSP
 --     - on_attach: a lua callback function to run after LSP attaches to a given buffer
-local lspconfig = require("lspconfig")
+--local lspconfig = require("lspconfig")
+local lsp = vim.lsp
 -- TODO: make it so that inlay hints are automatically set up where possible
 --[[vim.lsp.config("*", {
 	capabilities = {
@@ -75,48 +76,48 @@ local lspconfig = require("lspconfig")
 		},
 	},
 })]]
-local lsp_defaults = lspconfig.util.default_config
+--local lsp_defaults = lsp.util.default_config
 
-lsp_defaults.capabilities =
-	vim.tbl_deep_extend("force", lsp_defaults.capabilities, require("cmp_nvim_lsp").default_capabilities())
+--[[lsp_defaults.capabilities =
+	vim.tbl_deep_extend("force", lsp_defaults.capabilities, require("cmp_nvim_lsp").default_capabilities())]]
 
-lspconfig.gdscript.setup({})
+lsp.enable("gdscript")
 
-lspconfig.pylsp.setup({})
+lsp.enable("pylsp")
 
 --lspconfig.java_language_server.setup({})
 
-lspconfig.kotlin_language_server.setup({})
+lsp.enable("kotlin_language_server")
 
-lspconfig.haxe_language_server.setup({})
+lsp.enable("haxe_language_server")
 
-lspconfig.gopls.setup({})
+lsp.enable("gopls")
 
 --lspconfig.csharp_ls.setup({})
 
-lspconfig.marksman.setup({})
+lsp.enable("marksman")
 
-lspconfig.glsl_analyzer.setup({})
+lsp.enable("glsl_analyzer")
 
-lspconfig.cmake.setup({})
+lsp.enable("cmake")
 
-lspconfig.html.setup({})
+lsp.enable("html")
 
-lspconfig.tinymist.setup({})
+lsp.enable("tinymist")
 
 -- web shit
 -- is the ".setup({}) not needed anymore???"
 --lspconfig.somesass_ls.setup({})
-vim.lsp.enable("somesass_ls")
+lsp.enable("somesass_ls")
 
 --vim.lsp.enable("html") -- already added like 8 lines up lmao
-vim.lsp.enable("css_variables")
+lsp.enable("css_variables")
 
 --lspconfig.fortls.setup({})
-lspconfig.fortls.setup({})
+lsp.enable("fortls")
 -- lspconfig.ccls.setup{}
 
-lspconfig.jsonls.setup({
+lsp.enable("jsonls", {
 	settings = {
 		json = {
 			--schemas = require("schemastore").json.schemas(),
@@ -140,7 +141,7 @@ lspconfig.jsonls.setup({
 })
 
 -- this until [END] is a hot fucking mess so check it out more later to see if you can clean it up
-local configs = require("lspconfig.configs")
+--local configs = require("lspconfig.configs")
 --[[if not configs.l4sp then
 	configs.l4sp = {
 		default_config = {
@@ -154,14 +155,14 @@ local configs = require("lspconfig.configs")
 	}
 end]]
 
-configs.fennel_language_server = {
+--[[lsp.config("fennel_language_server", {
 	default_config = {
 		-- replace it with true path
 		cmd = { "fennel-language-server" },
 		filetypes = { "fennel" },
 		single_file_support = true,
 		-- source code resides in directory `fnl/`
-		root_dir = lspconfig.util.root_pattern("fnl"),
+		--	root_dir = lsp.util.root_pattern("fnl"),
 		settings = {
 			fennel = {
 				workspace = {
@@ -175,15 +176,15 @@ configs.fennel_language_server = {
 			},
 		},
 	},
-}
+})
 
-lspconfig.fennel_language_server.setup({})
+lsp.enable("fennel_language_server")]]
 
 --lspconfig.l4sp.setup({})
 
 -- html language server add snippets
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
+--[[local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 vim.lsp.config("html", {
@@ -191,7 +192,7 @@ vim.lsp.config("html", {
 })
 vim.lsp.config("cssls", {
 	capabilities = capabilities,
-})
+})]]
 
 vim.lsp.enable("html")
 vim.lsp.enable("cssls")
@@ -200,15 +201,10 @@ vim.lsp.enable("cssls")
 -- conflict with other rust plugin
 --lspconfig.rust_analyzer.setup({})
 
-lspconfig.clangd.setup({
-	--[[init_options = {
-		fallback_flags = { "--std=c++11", "-I/usr/include/c++/" },
-	},]]
-	--
-})
+lsp.enable("clangd")
 
 --lspconfig.lua_ls.setup({})
-lspconfig.lua_ls.setup({
+lsp.enable("lua_ls", {
 	on_init = function(client)
 		local path = client.workspace_folders[1].name
 		if not vim.loop.fs_stat(path .. "/.luarc.json") and not vim.loop.fs_stat(path .. "/.luarc.jsonc") then
@@ -242,10 +238,10 @@ lspconfig.lua_ls.setup({
 
 --lspconfig.cssls.setup({})
 
-lspconfig.gdshader_lsp.setup({})
+lsp.enable("gdshader_lsp")
 
-lspconfig.ts_ls.setup({
-	--[[init_options = {
+lsp.enable("ts_ls")
+--[[init_options = {
 
 		preferences = {
 
@@ -272,13 +268,12 @@ lspconfig.ts_ls.setup({
 
 		client.server_capabilities.document_range_formatting = false
 	end,]]
-}) --{ cmd = { "typescript-language-server", "--JSX", "--stdio" } })
 
-lspconfig.spyglassmc_language_server.setup({})
+--lsp.enable("spyglassmc_language_server")
 
 -- Java stuff
 --require("java").setup()
-lspconfig.jdtls.setup({})
+lsp.enable("jdtls")
 
 vim.api.nvim_create_autocmd("LspAttach", {
 	desc = "LSP actions",

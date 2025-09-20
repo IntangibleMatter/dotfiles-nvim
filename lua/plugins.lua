@@ -50,9 +50,9 @@ return {
 	},
 
 	-- lsp
-	{ "neovim/nvim-lspconfig", lazy = false, ensure_installed = {
+	--[[{ "neovim/nvim-lspconfig", lazy = false, ensure_installed = {
 		"java",
-	} },
+	} },]]
 	-- Debug Adapter Protocol support
 	{ "mfussenegger/nvim-dap" },
 	-- autocompletion
@@ -478,13 +478,13 @@ return {
 
 	-- Java
 
-	{
+	--[[{
 		"nvim-java/nvim-java",
 		opts = false,
 		dependencies = {
 			{ "williamboman/mason.nvim" },
 		},
-	},
+	},]]
 	--[[{
 		"nvim-java/nvim-java",
 		opts = {},
@@ -521,7 +521,7 @@ return {
 
 	-- fun
 	-- Track time in nvim
-	{ "wakatime/vim-wakatime", lazy = false },
+	-- { "wakatime/vim-wakatime", lazy = false },
 	-- typing practice
 	{
 		"nvzone/typr",
