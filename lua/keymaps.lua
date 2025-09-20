@@ -50,6 +50,10 @@ map("n", "<leader>hh", ":HexToggle<CR>", opt)
 
 map("n", "<leader>b-", ":BufferPrevious<CR>", opt)
 map("n", "<leader>b=", ":BufferNext<CR>", opt)
+map("n", "<leader>bcc", ":BufferClose<CR>", opt)
+map("n", "<leader>bcx", ":BufferCloseAllButCurrent<CR>", opt)
+map("n", "<leader>bch", ":BufferCloseBuffersLeft<CR>", opt)
+map("n", "<leader>bcl", ":BufferCloseBuffersRight<CR>", opt)
 
 map("n", "<leader>cd", ":cd %:p:h<CR>:pwd<CR>", opt)
 

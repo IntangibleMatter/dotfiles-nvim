@@ -8,6 +8,7 @@ local clangformat = function()
 		args = {
 			"-assume-filename",
 			util.escape_path(util.get_current_buffer_file_name()),
+			"--style=file:'/home/intangible/.config/nvim/misc/configfiles/.clang-format'",
 			--"-style={UseTab: Always, IndentWidth: 4, TabWidth: 4}",
 		},
 		stdin = true,
