@@ -1,8 +1,10 @@
-vim.lsp.set_log_level("debug")
+--vim.lsp.set_log_level("debug")
+
+local java_enabled = false
 
 require("mason").setup({
 	registries = {
-		"github:nvim-java/mason-registry",
+		--"github:nvim-java/mason-registry",
 		"github:mason-org/mason-registry",
 	},
 	ui = {
@@ -41,21 +43,24 @@ require("mason-lspconfig").setup({
 		"clangd",
 		-- "fortls",
 		"tinymist",
+		"jdtls",
 		--		'ccls',
 	},
 })
 
---[[require("java").setup({
+if java_enabled then
+	require("java").setup({
 
-	spring_boot_tools = {
-		enable = true,
-		version = "1.59.0",
-	},
-	java_test = {
-		enable = true,
-		version = "0.43.1",
-	},
-})]]
+		spring_boot_tools = {
+			enable = true,
+			version = "1.59.0",
+		},
+		java_test = {
+			enable = true,
+			version = "0.43.1",
+		},
+	})
+end
 
 --[[require("mason-lspconfig").setup({
 	"haxe_language_server",
@@ -273,7 +278,9 @@ lsp.enable("ts_ls")
 
 -- Java stuff
 --require("java").setup()
+-- if java_enabled then
 lsp.enable("jdtls")
+-- end
 
 vim.api.nvim_create_autocmd("LspAttach", {
 	desc = "LSP actions",

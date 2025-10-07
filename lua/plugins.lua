@@ -478,13 +478,17 @@ return {
 
 	-- Java
 
+	{
+		"https://codeberg.org/mfussenegger/nvim-jdtls.git",
+	},
+
 	--[[{
 		"nvim-java/nvim-java",
 		opts = false,
 		dependencies = {
 			{ "williamboman/mason.nvim" },
 		},
-	},]]
+	},
 	--[[{
 		"nvim-java/nvim-java",
 		opts = {},
