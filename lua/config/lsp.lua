@@ -26,7 +26,7 @@ require("mason").setup({
 require("mason-lspconfig").setup({
 	ensure_installed = {
 		-- "cmake",
-		-- "pylsp",
+		-- "pylsp", -- use `pip install "python-lsp-server[all]"`
 		-- "gopls",
 		"lua_ls",
 		-- Wht is this giving a warning? Installs fine
@@ -88,7 +88,7 @@ local lsp = vim.lsp
 
 lsp.enable("gdscript")
 
-lsp.enable("pylsp")
+vim.lsp.enable("pylsp")
 
 --lspconfig.java_language_server.setup({})
 

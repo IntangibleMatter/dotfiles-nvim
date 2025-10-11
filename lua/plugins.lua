@@ -49,6 +49,7 @@ return {
 		},
 	},
 
+	{ "neovim/nvim-lspconfig" },
 	-- lsp
 	--[[{ "neovim/nvim-lspconfig", lazy = false, ensure_installed = {
 		"java",
