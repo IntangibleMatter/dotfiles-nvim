@@ -129,3 +129,9 @@ vim.filetype.add({
 		fs = "glsl",
 	},
 })
+
+vim.filetype.add({
+	extension = {
+		gml = "c",
+	},
+})
