@@ -98,7 +98,8 @@ lsp.enable("haxe_language_server")
 
 lsp.enable("gopls")
 
---lspconfig.csharp_ls.setup({})
+-- Maybe replace with Omnisharp? Should compare and see which is better
+lsp.enable("csharp_ls")
 
 lsp.enable("marksman")
 
