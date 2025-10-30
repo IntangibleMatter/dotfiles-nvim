@@ -117,7 +117,7 @@ lsp.enable("tinymist")
 lsp.enable("somesass_ls")
 
 --vim.lsp.enable("html") -- already added like 8 lines up lmao
-lsp.enable("css_variables")
+-- lsp.enable("css_variables")
 
 --lspconfig.fortls.setup({})
 lsp.enable("fortls")
