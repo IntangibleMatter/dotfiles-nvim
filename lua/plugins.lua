@@ -483,6 +483,14 @@ return {
 		"https://codeberg.org/mfussenegger/nvim-jdtls.git",
 	},
 
+	-- renpy
+	{
+		"inzoiniac/renpy-syntax.nvim",
+		config = function()
+			require("renpy-syntax").setup()
+		end,
+	},
+
 	--[[{
 		"nvim-java/nvim-java",
 		opts = false,

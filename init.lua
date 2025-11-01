@@ -13,3 +13,5 @@ require("config.hexedit")
 require("commands.user_commands")
 
 require("keymaps")
+
+require("config.neovide")
