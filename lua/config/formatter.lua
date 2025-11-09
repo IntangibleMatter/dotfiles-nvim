@@ -154,6 +154,10 @@ require("formatter").setup({
 			--require("formatter.filetypes.c").clangformat,
 		},
 
+		cs = {
+			clangformat,
+		},
+
 		glsl = {
 			clangformat,
 		},
