@@ -34,3 +34,6 @@ opt.incsearch = true -- search as characters are entered
 opt.hlsearch = false -- do not highlight matches
 opt.ignorecase = true -- ignore case in searches by default
 opt.smartcase = true -- but make it case sensitive if an uppercase is entered
+
+-- shell because for some reason it's using bash on Pop 24???
+opt.shell = "fish"
