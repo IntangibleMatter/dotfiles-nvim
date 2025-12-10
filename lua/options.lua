@@ -11,6 +11,7 @@ vim.o.foldlevelstart = 99
 opt.conceallevel = 0
 -- Hint: use `:h <option>` to figure out the meaning if needed
 opt.clipboard = "unnamedplus" -- use system clipboard
+vim.g.clipboard = "xclip"
 opt.completeopt = { "menu", "menuone", "noselect" }
 opt.mouse = "a" -- allow the mouse to be used in Nvim
 
@@ -34,3 +35,6 @@ opt.incsearch = true -- search as characters are entered
 opt.hlsearch = false -- do not highlight matches
 opt.ignorecase = true -- ignore case in searches by default
 opt.smartcase = true -- but make it case sensitive if an uppercase is entered
+
+-- shell because for some reason it's using bash on Pop 24???
+opt.shell = "fish"
