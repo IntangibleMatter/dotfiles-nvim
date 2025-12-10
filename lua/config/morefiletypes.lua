@@ -132,6 +132,7 @@ vim.filetype.add({
 
 vim.filetype.add({
 	extension = {
-		gml = "c",
+		gml = "gml", --"c",
 	},
 })
+vim.treesitter.language.register("javascript", "gml")

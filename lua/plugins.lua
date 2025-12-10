@@ -228,6 +228,16 @@ return {
 		end,
 	},
 
+	--[[{
+		"icedman/nvim-textmate",
+		opts = {
+
+			quick_load = true,
+			theme_name = "Dracula",
+			override_colorscheme = false,
+		},
+	},]]
+
 	-- rainbow brackets
 	{ url = "https://gitlab.com/HiPhish/rainbow-delimiters.nvim" },
 	-- wrap with brackets in visual mode
