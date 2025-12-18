@@ -1,4 +1,5 @@
 local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+local parsers = require("nvim-treesitter.parsers")
 local configs = require("nvim-treesitter.configs")
 
 vim.filetype.add({
@@ -136,3 +137,30 @@ vim.filetype.add({
 	},
 })
 vim.treesitter.language.register("javascript", "gml")
+
+vim.filetype.add({
+	extension = {
+		mustache = "mustache",
+	},
+})
+
+--[[parser_config.mustache = {
+	install_info = {
+		url = "~/Dev/grammars/tree-sitter-mustache/",
+		files = { "src/parser.c", "src/scanner.c" },
+		branch = "main",
+		generate_requires_npm = false,
+		requires_generate_from_grammar = false,
+	},
+}]]
+
+parser_config.mustache = {
+	install_info = {
+		url = "https://github.com/TheLeoP/tree-sitter-mustache",
+		-- url = "~/Dev/grammars/tree-sitter-wren",
+		files = { "src/parser.c", "src/scanner.c" },
+		branch = "main",
+		queries = "queries",
+	},
+	filetype = "mustache",
+}
