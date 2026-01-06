@@ -11,7 +11,7 @@ vim.o.foldlevelstart = 99
 opt.conceallevel = 0
 -- Hint: use `:h <option>` to figure out the meaning if needed
 opt.clipboard = "unnamedplus" -- use system clipboard
-vim.g.clipboard = "xclip"
+-- vim.g.clipboard = "xclip"
 opt.completeopt = { "menu", "menuone", "noselect" }
 opt.mouse = "a" -- allow the mouse to be used in Nvim
 
