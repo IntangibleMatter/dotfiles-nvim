@@ -237,6 +237,13 @@ return {
 			override_colorscheme = false,
 		},
 	},]]
+	-- Run tasks.json vscode files
+	{
+		"stevearc/overseer.nvim",
+		---@module 'overseer'
+		---@type overseer.SetupOpts
+		opts = {},
+	},
 
 	-- rainbow brackets
 	{ url = "https://gitlab.com/HiPhish/rainbow-delimiters.nvim" },
