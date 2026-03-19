@@ -164,3 +164,11 @@ parser_config.mustache = {
 	},
 	filetype = "mustache",
 }
+
+vim.filetype.add({
+	pattern = {
+		[".*_SConscript"] = "sconscript",
+	},
+})
+
+vim.treesitter.language.register("python", "sconscript")
