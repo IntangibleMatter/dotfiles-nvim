@@ -33,7 +33,7 @@ require("mason-lspconfig").setup({
 		--		"gdtoolkit",
 		--"rust_analyzer",
 		--"csharp_ls",
-		"quick_lint_js",
+		--"quick_lint_js",
 		"marksman",
 		--'gdscript',
 		-- "haxe_language_server",
@@ -72,6 +72,9 @@ end
 --     - the settings table is sent to the LSP
 --     - on_attach: a lua callback function to run after LSP attaches to a given buffer
 --local lspconfig = require("lspconfig")
+
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
+local util = require("lspconfig.util")
 local lsp = vim.lsp
 -- TODO: make it so that inlay hints are automatically set up where possible
 --[[vim.lsp.config("*", {
@@ -94,7 +97,31 @@ vim.lsp.enable("pylsp")
 
 lsp.enable("kotlin_language_server")
 
+lsp.config["haxe_language_server"] = {
+	cmd = { "haxe-language-server", "--verbose" },
+	-- capabilities setting doesn't seem to affect anything- need to look
+	-- into the actual language server and how it's talking to nvim
+	-- capabilities = capabilities,
+	filetypes = { "haxe" },
+	init_options = {
+		displayArguments = { "build.hxml" },
+	},
+	--[[root_dir = function(startpath)
+		return M.search_ancestors(startpath, matcher)
+	end,]]
+	root_dir = function(bufnr, on_dir)
+		local fname = vim.api.nvim_buf_get_name(bufnr)
+		on_dir(util.root_pattern("compile.hxml")(fname) or util.root_pattern("Project.xml")(fname))
+	end,
+	settings = {
+		haxe = {
+			executable = "haxe",
+		},
+	},
+}
+
 lsp.enable("haxe_language_server")
+-- vim.lsp.config("haxe_language_server")
 
 lsp.enable("gopls")
 

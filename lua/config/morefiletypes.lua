@@ -172,3 +172,19 @@ vim.filetype.add({
 })
 
 vim.treesitter.language.register("python", "sconscript")
+
+vim.filetype.add({
+	extension = {
+		gon = "gon",
+	},
+})
+
+parser_config.gon = {
+	install_info = {
+		url = "https://github.com/IntangibleMatter/tree-sitter-gon",
+		files = { "src/parser.c" },
+		-- optional entries:
+		branch = "main",
+	},
+	filetype = "gon",
+}
