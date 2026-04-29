@@ -33,7 +33,7 @@ require("mason-lspconfig").setup({
 		--		"gdtoolkit",
 		--"rust_analyzer",
 		--"csharp_ls",
-		"quick_lint_js",
+		-- "quick_lint_js",
 		"marksman",
 		--'gdscript',
 		-- "haxe_language_server",

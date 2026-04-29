@@ -172,3 +172,19 @@ vim.filetype.add({
 })
 
 vim.treesitter.language.register("python", "sconscript")
+
+vim.filetype.add({
+	extension = {
+		yuck = "yuck",
+	},
+})
+
+parser_config.yuck = {
+	install_info = {
+		url = "https://github.com/tree-sitter-grammars/tree-sitter-yuck",
+		files = { "src/parser.c", "src/scanner.c" },
+		branch = "main",
+		queries = "queries",
+	},
+	filetype = "yuck",
+}
