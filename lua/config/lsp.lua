@@ -188,7 +188,7 @@ lsp.enable("jsonls", {
 	}
 end]]
 
---[[lsp.config("fennel_language_server", {
+lsp.config("fennel_language_server", {
 	default_config = {
 		-- replace it with true path
 		cmd = { "fennel-language-server" },
@@ -211,7 +211,7 @@ end]]
 	},
 })
 
-lsp.enable("fennel_language_server")]]
+lsp.enable("fennel_language_server")
 
 --lspconfig.l4sp.setup({})
 
