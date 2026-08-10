@@ -42,7 +42,7 @@ require("mason-lspconfig").setup({
 		--"jsonls",
 		"clangd",
 		-- "fortls",
-		"tinymist",
+		--"tinymist",
 		--"jdtls",
 		--		'ccls',
 	},
