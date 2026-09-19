@@ -188,3 +188,18 @@ parser_config.gon = {
 	},
 	filetype = "gon",
 }
+
+--supergiant filetypes
+vim.filetype.add({
+	pattern = {
+		["*.sjson"] = "sjson",
+	},
+})
+vim.filetype.add({
+	pattern = {
+		["*.map_text"] = "map_text",
+	},
+})
+
+vim.treesitter.language.register("javascript", "sjson")
+vim.treesitter.language.register("json", "map_text")
