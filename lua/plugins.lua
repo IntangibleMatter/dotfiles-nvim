@@ -183,6 +183,7 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		lazy = false,
+		branch = "main",
 		build = ":TSUpdate",
 		dependencies = {
 			-- make sure markview is loaded first to avoid bugs
