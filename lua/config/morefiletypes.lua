@@ -1,6 +1,6 @@
-local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
 local parsers = require("nvim-treesitter.parsers")
-local configs = require("nvim-treesitter.configs")
+local parser_config = require("nvim-treesitter.parsers")
+local configs = require("nvim-treesitter.config")
 
 vim.filetype.add({
 	extension = {
@@ -47,15 +47,27 @@ vim.filetype.add({
 	},
 })
 
-parser_config.haxe = {
-	install_info = {
-		url = "https://github.com/vantreeseba/tree-sitter-haxe",
-		files = { "src/parser.c", "src/scanner.c" },
-		-- optional entries:
-		branch = "main",
-	},
-	filetype = "haxe",
-}
+vim.api.nvim_create_autocmd("User", {
+	pattern = "TSUpdate",
+	callback = function()
+		require("nvim-treesitter.parsers").haxe = {
+			install_info = {
+				url = "https://github.com/vantreeseba/tree-sitter-haxe",
+				queries = "queries",
+			},
+		}
+	end,
+})
+
+-- parser_config.haxe = {
+-- 	install_info = {
+-- 		url = "https://github.com/vantreeseba/tree-sitter-haxe",
+-- 		files = { "src/parser.c", "src/scanner.c" },
+-- 		-- optional entries:
+-- 		branch = "main",
+-- 	},
+-- 	filetype = "haxe",
+-- }
 
 vim.filetype.add({
 	extension = {
@@ -63,15 +75,27 @@ vim.filetype.add({
 	},
 })
 
-parser_config.wren = {
-	install_info = {
-		-- url = "https://github.com/otherJL0/tree-sitter-wren",
-		url = "~/Dev/grammars/tree-sitter-wren",
-		files = { "src/parser.c" },
-		branch = "main",
-	},
-	filetype = "wren",
-}
+vim.api.nvim_create_autocmd("User", {
+	pattern = "TSUpdate",
+	callback = function()
+		require("nvim-treesitter.parsers").wren = {
+			install_info = {
+				path = "~/Dev/grammars/tree-sitter-wren",
+				generate = true,
+			},
+		}
+	end,
+})
+
+-- parser_config.wren = {
+-- 	install_info = {
+-- 		-- url = "https://github.com/otherJL0/tree-sitter-wren",
+-- 		url = "~/Dev/grammars/tree-sitter-wren",
+-- 		files = { "src/parser.c" },
+-- 		branch = "main",
+-- 	},
+-- 	filetype = "wren",
+-- }
 
 vim.filetype.add({
 	extension = {
@@ -79,13 +103,24 @@ vim.filetype.add({
 	},
 })
 
-parser_config.fluent = {
-	install_info = {
-		url = "https://github.com/projectfluent/tree-sitter-fluent",
-		files = { "src/parser.c" },
-	},
-	filetype = "fluent",
-}
+vim.api.nvim_create_autocmd("User", {
+	pattern = "TSUpdate",
+	callback = function()
+		require("nvim-treesitter.parsers").fluent = {
+			install_info = {
+				url = "https://github.com/projectfluent/tree-sitter-fluent",
+			},
+		}
+	end,
+})
+
+-- parser_config.fluent = {
+-- 	install_info = {
+-- 		url = "https://github.com/projectfluent/tree-sitter-fluent",
+-- 		files = { "src/parser.c" },
+-- 	},
+-- 	filetype = "fluent",
+-- }
 
 -- minecraft filetypes
 vim.filetype.add({
@@ -93,19 +128,32 @@ vim.filetype.add({
 		mcfunction = "mcfunction",
 	},
 })
+
 vim.filetype.add({
 	extension = {
 		mcmeta = "json",
 	},
 })
-parser_config.mcfunction = {
-	install_info = {
-		url = "https://github.com/theusaf/tree-sitter-mcfunction-lang",
-		files = { "src/parser.c" },
-		branch = "main",
-	},
-	filetype = "mcfunction",
-}
+
+vim.api.nvim_create_autocmd("User", {
+	pattern = "TSUpdate",
+	callback = function()
+		require("nvim-treesitter.parsers").mcfunction = {
+			install_info = {
+				url = "https://github.com/theusaf/tree-sitter-mcfunction-lang",
+			},
+		}
+	end,
+})
+
+-- parser_config.mcfunction = {
+-- 	install_info = {
+-- 		url = "https://github.com/theusaf/tree-sitter-mcfunction-lang",
+-- 		files = { "src/parser.c" },
+-- 		branch = "main",
+-- 	},
+-- 	filetype = "mcfunction",
+-- }
 
 vim.filetype.add({
 	extension = {
@@ -113,17 +161,28 @@ vim.filetype.add({
 	},
 })
 
-parser_config.asm6502 = {
-	install_info = {
-		url = "~/Dev/grammars/tree-sitter-merlin6502/", -- local path or git repo
-		files = { "src/parser.c" }, -- note that some parsers also require src/scanner.c or src/scanner.cc
-		-- optional entries:
-		branch = "main", -- default branch in case of git repo if different from master
-		generate_requires_npm = false, -- if stand-alone parser without npm dependencies
-		requires_generate_from_grammar = false, -- if folder contains pre-generated src/parser.c
-	},
-	filetype = "s", -- if filetype does not match the parser name
-}
+vim.api.nvim_create_autocmd("User", {
+	pattern = "TSUpdate",
+	callback = function()
+		require("nvim-treesitter.parsers").asm6502 = {
+			install_info = {
+				url = "~/Dev/grammars/tree-sitter-merlin6502/",
+			},
+		}
+	end,
+})
+
+-- parser_config.asm6502 = {
+-- 	install_info = {
+-- 		url = "~/Dev/grammars/tree-sitter-merlin6502/", -- local path or git repo
+-- 		files = { "src/parser.c" }, -- note that some parsers also require src/scanner.c or src/scanner.cc
+-- 		-- optional entries:
+-- 		branch = "main", -- default branch in case of git repo if different from master
+-- 		generate_requires_npm = false, -- if stand-alone parser without npm dependencies
+-- 		requires_generate_from_grammar = false, -- if folder contains pre-generated src/parser.c
+-- 	},
+-- 	filetype = "s", -- if filetype does not match the parser name
+-- }
 
 vim.filetype.add({
 	extension = {
@@ -154,16 +213,28 @@ vim.filetype.add({
 	},
 }]]
 
-parser_config.mustache = {
-	install_info = {
-		url = "https://github.com/TheLeoP/tree-sitter-mustache",
-		-- url = "~/Dev/grammars/tree-sitter-wren",
-		files = { "src/parser.c", "src/scanner.c" },
-		branch = "main",
-		queries = "queries",
-	},
-	filetype = "mustache",
-}
+vim.api.nvim_create_autocmd("User", {
+	pattern = "TSUpdate",
+	callback = function()
+		require("nvim-treesitter.parsers").mustache = {
+			install_info = {
+				url = "https://github.com/TheLeoP/tree-sitter-mustache",
+				queries = "queries",
+			},
+		}
+	end,
+})
+
+-- parser_config.mustache = {
+-- 	install_info = {
+-- 		url = "https://github.com/TheLeoP/tree-sitter-mustache",
+-- 		-- url = "~/Dev/grammars/tree-sitter-wren",
+-- 		files = { "src/parser.c", "src/scanner.c" },
+-- 		branch = "main",
+-- 		queries = "queries",
+-- 	},
+-- 	filetype = "mustache",
+-- }
 
 vim.filetype.add({
 	pattern = {
@@ -179,15 +250,33 @@ vim.filetype.add({
 	},
 })
 
-parser_config.gon = {
-	install_info = {
-		url = "https://github.com/IntangibleMatter/tree-sitter-gon",
-		files = { "src/parser.c" },
-		-- optional entries:
-		branch = "main",
+vim.api.nvim_create_autocmd("User", {
+	pattern = "TSUpdate",
+	callback = function()
+		require("nvim-treesitter.parsers").gon = {
+			install_info = {
+				url = "https://github.com/IntangibleMatter/tree-sitter-gon",
+				queries = "queries",
+			},
+		}
+	end,
+})
+
+-- parser_config.gon = {
+-- 	install_info = {
+-- 		url = "https://github.com/IntangibleMatter/tree-sitter-gon",
+-- 		files = { "src/parser.c" },
+-- 		-- optional entries:
+-- 		branch = "main",
+-- 	},
+-- 	filetype = "gon",
+-- }
+
+vim.filetype.add({
+	extension = {
+		yuck = "yuck",
 	},
-	filetype = "gon",
-}
+})
 
 --supergiant filetypes
 vim.filetype.add({
@@ -203,3 +292,52 @@ vim.filetype.add({
 
 vim.treesitter.language.register("javascript", "sjson")
 vim.treesitter.language.register("json", "map_text")
+vim.api.nvim_create_autocmd("User", {
+	pattern = "TSUpdate",
+	callback = function()
+		require("nvim-treesitter.parsers").yuck = {
+			install_info = {
+				url = "https://github.com/tree-sitter-grammars/tree-sitter-yuck",
+				queries = "queries",
+			},
+		}
+	end,
+})
+
+-- parser_config.yuck = {
+-- 	install_info = {
+-- 		url = "https://github.com/tree-sitter-grammars/tree-sitter-yuck",
+-- 		files = { "src/parser.c", "src/scanner.c" },
+-- 		branch = "main",
+-- 		queries = "queries",
+-- 	},
+-- 	filetype = "yuck",
+-- }
+
+vim.filetype.add({
+	extension = {
+		uwu = "bottomspeak",
+	},
+})
+
+vim.api.nvim_create_autocmd("User", {
+	pattern = "TSUpdate",
+	callback = function()
+		require("nvim-treesitter.parsers").bottomspeak = {
+			install_info = {
+				url = "https://github.com/IntangibleMatter/tree-sitter-bottomspeak",
+				queries = "queries/",
+			},
+		}
+	end,
+})
+
+-- parser_config.bottomspeak = {
+-- 	install_info = {
+-- 		url = "https://github.com/IntangibleMatter/tree-sitter-bottomspeak",
+-- 		files = { "src/parser.c" },
+-- 		-- optional entries:
+-- 		branch = "main",
+-- 	},
+-- 	filetype = "bottomspeak",
+-- }
