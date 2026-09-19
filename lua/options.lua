@@ -9,8 +9,29 @@ vim.lsp.set_log_level("warn")
 vim.o.foldlevelstart = 99
 
 opt.conceallevel = 0
+
+-- from stackoverflow
+-- local fd_os_release = assert(io.open("/etc/os-release"), "r")
+-- local s_os_release = fd_os_release:read("*a")
+-- fd_os_release:close()
+-- s_os_release = s_os_release:lower()
+-- local is_arch = s_os_release:match("arch")
+-- local is_pop = s_os_release:match("pop")
+
+-- if is_arch == nil then
+-- 	print("is not arch")
+-- else
+-- 	print("is arch")
+-- end
+
 -- Hint: use `:h <option>` to figure out the meaning if needed
-opt.clipboard = "unnamedplus" -- use system clipboard
+-- opt.clipboard = opt.clipboard + "unnamedplus"
+opt.clipboard = "unnamedplus"
+-- if not is_arch then
+-- 	opt.clipboard = "unnamedplus" -- use system clipboard
+-- else
+-- opt.clipboard = "wl-copy" -- niri
+-- end
 -- vim.g.clipboard = "xclip"
 opt.completeopt = { "menu", "menuone", "noselect" }
 opt.mouse = "a" -- allow the mouse to be used in Nvim

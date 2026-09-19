@@ -27,7 +27,7 @@ require("mason-lspconfig").setup({
 	ensure_installed = {
 		-- "cmake",
 		-- "pylsp", -- use `pip install "python-lsp-server[all]"`
-		-- "gopls",
+		"gopls",
 		"lua_ls",
 		-- Wht is this giving a warning? Installs fine
 		--		"gdtoolkit",
@@ -38,9 +38,9 @@ require("mason-lspconfig").setup({
 		--'gdscript',
 		-- "haxe_language_server",
 		--"java-language-server",
-		"kotlin_language_server",
-		--"jsonls",
-		"clangd",
+		-- "kotlin_language_server",
+		"jsonls",
+		-- "clangd",
 		-- "fortls",
 		--"tinymist",
 		--"jdtls",
@@ -237,7 +237,8 @@ vim.lsp.enable("cssls")
 lsp.enable("clangd")
 
 --lspconfig.lua_ls.setup({})
-lsp.enable("lua_ls", {
+lsp.enable("lua_ls")
+--[[lsp.enable("lua_ls", {
 	on_init = function(client)
 		local path = client.workspace_folders[1].name
 		if not vim.loop.fs_stat(path .. "/.luarc.json") and not vim.loop.fs_stat(path .. "/.luarc.jsonc") then
@@ -267,7 +268,7 @@ lsp.enable("lua_ls", {
 		end
 		return true
 	end,
-})
+})]]
 
 --lspconfig.cssls.setup({})
 
