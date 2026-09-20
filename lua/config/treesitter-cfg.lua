@@ -1,4 +1,73 @@
-local config_options = {
+require("nvim-treesitter").install({
+	"arduino",
+	"asm",
+	"bibtex",
+	"c",
+	"c_sharp",
+	"cpp",
+	"css",
+	"csv",
+	"commonlisp",
+	"desktop",
+	"editorconfig",
+	"fennel",
+	"fish",
+	"forth",
+	"fortran",
+	"gdscript",
+	"gdshader",
+	"git_config",
+	"git_rebase",
+	"gitattributes",
+	"gitcommit",
+	"gitignore",
+	"glsl",
+	"go",
+	"gomod",
+	"gosum",
+	"godot_resource",
+	"haskell",
+	"html",
+	"html_tags",
+	"ini",
+	"java",
+	"javascript",
+	"json",
+	"jsx",
+	"kotlin",
+	"lua",
+	"luadoc",
+	"markdown",
+	"pascal",
+	"po",
+	"python",
+	"query",
+	"regex",
+	"robots_txt",
+	"rust",
+	"typescript",
+	"tsx",
+	"typst",
+	"usd",
+	"vim",
+	"vimdoc",
+	"xml",
+	"yaml",
+	"yuck",
+})
+
+-- start the highlighter
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = require("nvim-treesitter").get_installed(),
+	callback = function()
+		vim.treesitter.start()
+		vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+		vim.wo.foldmethod = "expr"
+		vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+	end,
+})
+
+--[[local config_options = {
 	-- A list of parser names, or "all" (the five listed parsers should always be installed)
 	ensure_installed = {
 		"c",
@@ -49,9 +118,10 @@ local config_options = {
 		-- Instead of true it can also be a list of languages
 		additional_vim_regex_highlighting = false,
 	},
-}
+}]]
+--
 
-require("nvim-treesitter.config").setup(config_options)
+-- require("nvim-treesitter.config").setup(config_options)
 
 --local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
 --local configs = require("nvim-treesitter.configs")
