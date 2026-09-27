@@ -332,6 +332,24 @@ vim.api.nvim_create_autocmd("User", {
 	end,
 })
 
+vim.filetype.add({
+	extension = {
+		vtt = "vtt",
+	},
+})
+
+vim.api.nvim_create_autocmd("User", {
+	pattern = "TSUpdate",
+	callback = function()
+		require("nvim-treesitter.parsers").vtt = {
+			install_info = {
+				url = "https://github.com/IntangibleMatter/tree-sitter-vtt",
+				queries = "queries/",
+			},
+		}
+	end,
+})
+
 -- parser_config.bottomspeak = {
 -- 	install_info = {
 -- 		url = "https://github.com/IntangibleMatter/tree-sitter-bottomspeak",
